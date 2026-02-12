@@ -42,7 +42,7 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
   </h3>
   <div class="menu-collab">
     {collaboration.map((item) => {
-      const collabLabel = localized(item, "collaborationLabel", lang);
+      const collabLabel = localized(item, "collabLabel", lang);
       const collabUrl = item.collaborationUrl;
       return (
         <MenuItemComponent

@@ -62,8 +62,8 @@ export interface MenuItem extends MicroCMSListContent {
   description_en: string;
   movieUrl?: string;
   category: "recommended" | "collaboration";
-  collaborationLabel_ja?: string;
-  collaborationLabel_en?: string;
+  collabLabel_ja?: string;
+  collabLabel_en?: string;
   collaborationUrl?: string;
   sortOrder: number;
 }
@@ -101,6 +101,14 @@ export interface FooterResponse {
   snsLinks: SnsLink[];
   otherMenuUrl?: string;
 }
+
+// 統合型: site-data エンドポイント（旧6APIを1つに統合）
+export type SiteDataResponse = SiteMetaResponse &
+  HeroResponse &
+  CatchcopyResponse &
+  AboutResponse &
+  StoreInfoResponse &
+  FooterResponse;
 
 // ヘルパー: 言語別フィールド取得（型安全）
 export function localized<T extends object>(

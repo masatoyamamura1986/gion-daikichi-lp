@@ -19,6 +19,7 @@
 - `docs/PRD.md` - 要件定義
 - `docs/ARCHITECTURE.md` - 技術構成・ディレクトリ構造
 - `docs/API_SPEC.md` - microCMS API スキーマ・型定義
+- `docs/MICROCMS_GUIDE.md` - microCMS 運用ガイド（JSON フォーマット・Write API）
 - `docs/DEVELOPMENT_GUIDE.md` - 開発手順書
 
 ## コーディング規約
@@ -82,17 +83,14 @@ MICROCMS_API_KEY=xxx
 
 **注意: `.env` は絶対にコミットしない。**
 
-## microCMS API 一覧
+## microCMS API 一覧（2 API 構成）
 
 | API ID | 型 | 用途 |
 |---|---|---|
-| `site-meta` | オブジェクト | SEO メタ情報・OGP |
-| `hero` | オブジェクト | ヒーロースライダー |
-| `catchcopy` | オブジェクト | キャッチコピー |
-| `about` | オブジェクト | About セクション |
+| `site-data` | オブジェクト | SEO・ヒーロー・キャッチコピー・About・店舗情報・フッター |
 | `menu-items` | リスト | メニュー一覧（category: recommended / collaboration） |
-| `store-info` | オブジェクト | 店舗情報 + フッター住所・TEL |
-| `footer` | オブジェクト | SNS リンク・その他メニューURL |
+
+> Hobby プランの API 数制限により旧 7 API → 2 API に統合。詳細は `docs/API_SPEC.md` 参照。
 
 ## ヘルパー関数
 

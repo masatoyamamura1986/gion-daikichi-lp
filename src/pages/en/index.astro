@@ -2,22 +2,22 @@
 import {
   client,
   localized,
-} from "../lib/microcms";
+} from "../../lib/microcms";
 import type {
   SiteDataResponse,
   MenuItem,
-} from "../lib/microcms";
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import NavPanel from "../components/NavPanel.astro";
-import Hero from "../components/Hero.astro";
-import Catchcopy from "../components/Catchcopy.astro";
-import About from "../components/About.astro";
-import Menu from "../components/Menu.astro";
-import StoreInfo from "../components/StoreInfo.astro";
-import Footer from "../components/Footer.astro";
+} from "../../lib/microcms";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import NavPanel from "../../components/NavPanel.astro";
+import Hero from "../../components/Hero.astro";
+import Catchcopy from "../../components/Catchcopy.astro";
+import About from "../../components/About.astro";
+import Menu from "../../components/Menu.astro";
+import StoreInfo from "../../components/StoreInfo.astro";
+import Footer from "../../components/Footer.astro";
 
-const lang = "ja" as const;
+const lang = "en" as const;
 
 const [siteData, recommended, collaboration] = await Promise.all([
   client.get<SiteDataResponse>({ endpoint: "site-data" }),

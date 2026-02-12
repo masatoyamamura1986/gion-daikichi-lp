@@ -4,6 +4,10 @@
  * 現行 HTML のコンテンツを microCMS に投入する。
  * 画像は Media API でアップロードし、返却 URL を使用する。
  *
+ * API 構成（無料プラン対応: 2 API）:
+ *   - site-data（オブジェクト型）: 旧 site-meta + hero + catchcopy + about + store-info + footer を統合
+ *   - menu-items（リスト型）: メニュー一覧
+ *
  * 実行: npx tsx scripts/migrate.ts
  * 環境変数: MICROCMS_SERVICE_DOMAIN, MICROCMS_API_KEY
  */
@@ -142,8 +146,9 @@ async function uploadAllImages(): Promise<ImageMap> {
 // Step 2: コンテンツ投入
 // ---------------------------------------------------------------------------
 
-function buildSiteMeta(images: ImageMap): Record<string, unknown> {
+function buildSiteData(images: ImageMap): Record<string, unknown> {
   return {
+    // site-meta
     title_ja: "祇園だいきち牧場 | 祇園で味わうA5近江牛",
     title_en: "Gion Daikichi Ranch | A5 Omi Beef in Gion, Kyoto",
     description_ja:
@@ -151,11 +156,7 @@ function buildSiteMeta(images: ImageMap): Record<string, unknown> {
     description_en:
       "Gion Daikichi Ranch is a restaurant where you can enjoy A5-grade Omi beef raised on our own satoyama ranch. Enjoy our signature hitsumabushi, steak bowls, sukiyaki set meals, and more.",
     ogImage: images["hero.webp"],
-  };
-}
-
-function buildHero(images: ImageMap): Record<string, unknown> {
-  return {
+    // hero
     slides: [
       {
         image: images["hero.webp"],
@@ -178,22 +179,14 @@ function buildHero(images: ImageMap): Record<string, unknown> {
         alt_en: "Daikichi Ranch",
       },
     ],
-  };
-}
-
-function buildCatchcopy(): Record<string, unknown> {
-  return {
+    // catchcopy
     mainCopy_ja: "祇園で味わう、里山育ちのA5近江牛",
     mainCopy_en: "A5 Omi Beef Raised in the Satoyama, Savored in Gion",
     subCopy_ja:
       "自社牧場で育てた近江だいきち牛を、名物ひつまぶしから夜のコースまで",
     subCopy_en:
       "From our signature hitsumabushi to evening course menus, enjoy Omi Daikichi Beef raised on our own ranch.",
-  };
-}
-
-function buildAbout(images: ImageMap): Record<string, unknown> {
-  return {
+    // about
     image: images["exterior.webp"],
     imageAlt_ja: "祇園だいきち牧場 外観",
     imageAlt_en: "Gion Daikichi Ranch Exterior",
@@ -217,6 +210,51 @@ function buildAbout(images: ImageMap): Record<string, unknown> {
         url_en: "http://www.omibeef.asia/premium/",
       },
     ],
+    // store-info
+    interiorImages: [
+      {
+        image: images["interior-1f.webp"],
+        alt_ja: "祇園だいきち牧場 内観1F",
+        alt_en: "Gion Daikichi Ranch Interior 1F",
+      },
+      {
+        image: images["interior-2f.webp"],
+        alt_ja: "祇園だいきち牧場 内観2F",
+        alt_en: "Gion Daikichi Ranch Interior 2F",
+      },
+    ],
+    address_ja: "京都府京都市東山区祇園町南側528番地6",
+    address_en:
+      "528-6 Gionmachi Minamigawa, Higashiyama-ku, Kyoto-shi, Kyoto 605-0074, Japan",
+    postalCode: "605-0074",
+    tel: "075-746-4129",
+    hours_ja: "11:00\u301c15:00、17:00\u301c20:00",
+    hours_en: "11:00 \u2013 15:00, 17:00 \u2013 20:00",
+    closedDay_ja: "日曜日",
+    closedDay_en: "Sundays",
+    payment_ja: "※確認中",
+    payment_en: "TBD",
+    reservation_ja: "承っておりません",
+    reservation_en: "Unavailable",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=528-6+Gionmachi+Minamigawa,+Higashiyama-ku,+Kyoto&output=embed",
+    affiliatedUrl: "https://daikichibeef.jp/shop",
+    // footer
+    snsLinks: [
+      {
+        platform: "instagram",
+        url: "https://www.instagram.com/gion.daikichibeef?igsh=a2FzNGtiY210aHhk",
+      },
+      {
+        platform: "tiktok",
+        url: "https://www.tiktok.com/@gion.daikichibeef?_r=1&_t=ZS-93UkS1kX9HR",
+      },
+      {
+        platform: "youtube",
+        url: "https://youtube.com/channel/UCylR4wY3H3f3yQqHagrWZjQ?si=tIQ2c3DS_SpcBdck",
+      },
+    ],
+    otherMenuUrl: null,
   };
 }
 
@@ -230,8 +268,8 @@ interface MenuItemData {
   description_en: string;
   movieUrl: string | null;
   category: "recommended" | "collaboration";
-  collaborationLabel_ja?: string;
-  collaborationLabel_en?: string;
+  collabLabel_ja?: string;
+  collabLabel_en?: string;
   collaborationUrl?: string;
   sortOrder: number;
 }
@@ -292,65 +330,12 @@ function buildMenuItems(images: ImageMap): MenuItemData[] {
         '\u201cKyoto Curry Udon\u201d is finished as a thick, glossy sauce by blending our umami dashi\u2014crafted to bring out the richness of kombu kelp and bonito\u2014with 11 carefully selected spices. Enjoy the sweet, rich taste of wagyu sukiyaki, made with loin from our own-ranch Omi Daikichi Beef seasoned in our house-made warishita, together with thick-cut fried tofu and Kujo green onions\u2014bringing out the signature depth and texture of Gion Mimiko\u2019s original curry udon.',
       movieUrl: null,
       category: "collaboration",
-      collaborationLabel_ja: "祇園味味香",
-      collaborationLabel_en: "Gion Mimiko",
+      collabLabel_ja: "祇園味味香",
+      collabLabel_en: "Gion Mimiko",
       collaborationUrl: "https://mimikou.jp/kyoto-curry-udon-flavor/",
       sortOrder: 1,
     },
   ];
-}
-
-function buildStoreInfo(images: ImageMap): Record<string, unknown> {
-  return {
-    interiorImages: [
-      {
-        image: images["interior-1f.webp"],
-        alt_ja: "祇園だいきち牧場 内観1F",
-        alt_en: "Gion Daikichi Ranch Interior 1F",
-      },
-      {
-        image: images["interior-2f.webp"],
-        alt_ja: "祇園だいきち牧場 内観2F",
-        alt_en: "Gion Daikichi Ranch Interior 2F",
-      },
-    ],
-    address_ja: "京都府京都市東山区祇園町南側528番地6",
-    address_en:
-      "528-6 Gionmachi Minamigawa, Higashiyama-ku, Kyoto-shi, Kyoto 605-0074, Japan",
-    postalCode: "605-0074",
-    tel: "075-746-4129",
-    hours_ja: "11:00\u301c15:00、17:00\u301c20:00",
-    hours_en: "11:00 \u2013 15:00, 17:00 \u2013 20:00",
-    closedDay_ja: "日曜日",
-    closedDay_en: "Sundays",
-    payment_ja: "※確認中",
-    payment_en: "TBD",
-    reservation_ja: "承っておりません",
-    reservation_en: "Unavailable",
-    mapEmbedUrl:
-      "https://www.google.com/maps?q=528-6+Gionmachi+Minamigawa,+Higashiyama-ku,+Kyoto&output=embed",
-    affiliatedUrl: "https://daikichibeef.jp/shop",
-  };
-}
-
-function buildFooter(): Record<string, unknown> {
-  return {
-    snsLinks: [
-      {
-        platform: "instagram",
-        url: "https://www.instagram.com/gion.daikichibeef?igsh=a2FzNGtiY210aHhk",
-      },
-      {
-        platform: "tiktok",
-        url: "https://www.tiktok.com/@gion.daikichibeef?_r=1&_t=ZS-93UkS1kX9HR",
-      },
-      {
-        platform: "youtube",
-        url: "https://youtube.com/channel/UCylR4wY3H3f3yQqHagrWZjQ?si=tIQ2c3DS_SpcBdck",
-      },
-    ],
-    otherMenuUrl: null,
-  };
 }
 
 // ---------------------------------------------------------------------------
@@ -368,61 +353,24 @@ async function main(): Promise<void> {
 
   const results: MigrateResult[] = [];
 
-  // site-meta (PUT)
-  console.log("[1/7] site-meta を投入中...");
+  // site-data (PUT) - 旧6APIを1つに統合
+  console.log("[1/2] site-data を投入中...");
   try {
-    await putObject("site-meta", buildSiteMeta(images));
-    results.push({ endpoint: "site-meta", success: true });
+    await putObject("site-data", buildSiteData(images));
+    results.push({ endpoint: "site-data", success: true });
     console.log("  -> 成功\n");
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);
-    results.push({ endpoint: "site-meta", success: false, error: message });
+    results.push({ endpoint: "site-data", success: false, error: message });
     console.error(`  -> 失敗: ${message}\n`);
   }
 
-  // hero (PUT)
-  console.log("[2/7] hero を投入中...");
-  try {
-    await putObject("hero", buildHero(images));
-    results.push({ endpoint: "hero", success: true });
-    console.log("  -> 成功\n");
-  } catch (e) {
-    const message = e instanceof Error ? e.message : String(e);
-    results.push({ endpoint: "hero", success: false, error: message });
-    console.error(`  -> 失敗: ${message}\n`);
-  }
-
-  // catchcopy (PUT)
-  console.log("[3/7] catchcopy を投入中...");
-  try {
-    await putObject("catchcopy", buildCatchcopy());
-    results.push({ endpoint: "catchcopy", success: true });
-    console.log("  -> 成功\n");
-  } catch (e) {
-    const message = e instanceof Error ? e.message : String(e);
-    results.push({ endpoint: "catchcopy", success: false, error: message });
-    console.error(`  -> 失敗: ${message}\n`);
-  }
-
-  // about (PUT)
-  console.log("[4/7] about を投入中...");
-  try {
-    await putObject("about", buildAbout(images));
-    results.push({ endpoint: "about", success: true });
-    console.log("  -> 成功\n");
-  } catch (e) {
-    const message = e instanceof Error ? e.message : String(e);
-    results.push({ endpoint: "about", success: false, error: message });
-    console.error(`  -> 失敗: ${message}\n`);
-  }
-
-  // menu-items (POST x4)
-  console.log("[5/7] menu-items を投入中...");
+  // menu-items (PUT x4)
+  console.log("[2/2] menu-items を投入中...");
   const menuItems = buildMenuItems(images);
   for (const item of menuItems) {
     const { id, ...body } = item;
     try {
-      // コンテンツ ID を指定して POST（id をパスパラメータにする）
       const res = await fetch(`${BASE_URL}/menu-items/${id}`, {
         method: "PUT",
         headers: {
@@ -450,30 +398,6 @@ async function main(): Promise<void> {
   }
   results.push({ endpoint: "menu-items", success: true });
   console.log("");
-
-  // store-info (PUT)
-  console.log("[6/7] store-info を投入中...");
-  try {
-    await putObject("store-info", buildStoreInfo(images));
-    results.push({ endpoint: "store-info", success: true });
-    console.log("  -> 成功\n");
-  } catch (e) {
-    const message = e instanceof Error ? e.message : String(e);
-    results.push({ endpoint: "store-info", success: false, error: message });
-    console.error(`  -> 失敗: ${message}\n`);
-  }
-
-  // footer (PUT)
-  console.log("[7/7] footer を投入中...");
-  try {
-    await putObject("footer", buildFooter());
-    results.push({ endpoint: "footer", success: true });
-    console.log("  -> 成功\n");
-  } catch (e) {
-    const message = e instanceof Error ? e.message : String(e);
-    results.push({ endpoint: "footer", success: false, error: message });
-    console.error(`  -> 失敗: ${message}\n`);
-  }
 
   // Step 3: 結果サマリー
   console.log("=== 移行結果サマリー ===");
