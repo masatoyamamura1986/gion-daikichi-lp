@@ -1,6 +1,6 @@
 ---
 import type { Lang, MenuItem as MenuItemType } from "../lib/microcms";
-import { localized, formatPrice, isSafeUrl } from "../lib/microcms";
+import { localized, isSafeUrl } from "../lib/microcms";
 import MenuItemComponent from "./MenuItem.astro";
 
 interface Props {
@@ -28,7 +28,7 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
         lang={lang}
         image={item.image}
         name={localized(item, "name", lang)}
-        price={formatPrice(item.price, lang)}
+        price={item.price}
         description={localized(item, "description", lang)}
         movieUrl={item.movieUrl}
         movieLabel={lang === "ja" ? "動画" : "Movie"}
@@ -49,7 +49,7 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
           lang={lang}
           image={item.image}
           name={localized(item, "name", lang)}
-          price={formatPrice(item.price, lang)}
+          price={item.price}
           description={localized(item, "description", lang)}
           movieUrl={collabUrl}
           movieLabel={collabLabel || (lang === "ja" ? "動画" : "Movie")}
@@ -80,6 +80,8 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
   .menu {
     padding: 120px 0;
     border-bottom: 1px solid #e8e8e8;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
   .menu-sub-heading {
@@ -114,7 +116,7 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
   /* SP */
   @media (max-width: 768px) {
     .menu {
-      padding: 60px 0;
+      padding: 60px var(--sp-padding);
     }
 
     .menu-sub-heading {

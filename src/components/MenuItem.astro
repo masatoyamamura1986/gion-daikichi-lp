@@ -6,7 +6,7 @@ interface Props {
   lang: Lang;
   image: { url: string; width?: number; height?: number };
   name: string;
-  price: string;
+  price: number;
   description: string;
   movieUrl?: string;
   movieLabel: string;
@@ -14,13 +14,16 @@ interface Props {
 
 const { lang, image, name, price, description, movieUrl, movieLabel } =
   Astro.props;
+
+const formattedPrice = `¥${price.toLocaleString("ja-JP")}`;
+const taxLabel = lang === "ja" ? "（税込）" : " (tax included)";
 ---
 
 <div class="menu-item" data-lang={lang}>
   <img src={image.url} alt={name} width={image.width} height={image.height} />
   <div class="menu-item-info">
     <h4 class="menu-item-name">{name}</h4>
-    <p class="menu-item-price">{price}</p>
+    <p class="menu-item-price">{formattedPrice}<span class="tax-label">{taxLabel}</span></p>
     <p class="menu-item-desc">{description}</p>
     {movieUrl && isSafeUrl(movieUrl) && (
       <a
@@ -74,6 +77,10 @@ const { lang, image, name, price, description, movieUrl, movieLabel } =
     margin-bottom: 16px;
   }
 
+  .tax-label {
+    font-size: 12px;
+  }
+
   .menu-item-desc {
     font-size: 14px;
     letter-spacing: 0.08em;
@@ -109,6 +116,10 @@ const { lang, image, name, price, description, movieUrl, movieLabel } =
 
     .menu-item-price {
       font-size: 16px;
+    }
+
+    .tax-label {
+      font-size: 11px;
     }
 
     .menu-item-desc {

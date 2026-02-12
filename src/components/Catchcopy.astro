@@ -22,6 +22,8 @@ const { lang, mainCopy, subCopy } = Astro.props;
     align-items: center;
     padding: 80px 0;
     text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
   .catchcopy h1 {
@@ -59,7 +61,7 @@ const { lang, mainCopy, subCopy } = Astro.props;
   /* SP */
   @media (max-width: 768px) {
     .catchcopy {
-      padding: 50px 0;
+      padding: 50px var(--sp-padding);
     }
 
     .catchcopy h1 {

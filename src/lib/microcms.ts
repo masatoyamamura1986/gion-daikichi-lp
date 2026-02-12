@@ -61,7 +61,7 @@ export interface MenuItem extends MicroCMSListContent {
   description_ja: string;
   description_en: string;
   movieUrl?: string;
-  category: "recommended" | "collaboration";
+  category: ("recommended" | "collaboration")[];
   collabLabel_ja?: string;
   collabLabel_en?: string;
   collaborationUrl?: string;
@@ -93,7 +93,7 @@ export interface StoreInfoResponse {
 }
 
 interface SnsLink {
-  platform: "instagram" | "tiktok" | "youtube";
+  platform: ("instagram" | "tiktok" | "youtube")[];
   url: string;
 }
 
@@ -131,5 +131,9 @@ export function formatPrice(price: number, lang: Lang): string {
 
 // ヘルパー: URL プロトコルチェック
 export function isSafeUrl(url: string): boolean {
-  return url.startsWith("http://") || url.startsWith("https://");
+  return (
+    url.startsWith("http://") ||
+    url.startsWith("https://") ||
+    url.startsWith("/")
+  );
 }

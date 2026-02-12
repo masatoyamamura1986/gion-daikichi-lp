@@ -23,11 +23,11 @@ const [siteData, recommended, collaboration] = await Promise.all([
   client.get<SiteDataResponse>({ endpoint: "site-data" }),
   client.getList<MenuItem>({
     endpoint: "menu-items",
-    queries: { filters: "category[equals]recommended", orders: "sortOrder" },
+    queries: { filters: "category[contains]recommended", orders: "sortOrder" },
   }),
   client.getList<MenuItem>({
     endpoint: "menu-items",
-    queries: { filters: "category[equals]collaboration", orders: "sortOrder" },
+    queries: { filters: "category[contains]collaboration", orders: "sortOrder" },
   }),
 ]);
 ---
@@ -52,7 +52,7 @@ const [siteData, recommended, collaboration] = await Promise.all([
       lang={lang}
       recommended={recommended.contents}
       collaboration={collaboration.contents}
-      otherMenuUrl={siteData.otherMenuUrl}
+      otherMenuUrl="/menu-en.pdf"
     />
     <StoreInfo lang={lang} data={siteData} />
   </main>

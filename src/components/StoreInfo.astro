@@ -101,6 +101,8 @@ const { lang, data } = Astro.props;
 <style>
   .store-info {
     padding: 120px 0;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
   .store-info-map {
@@ -171,7 +173,7 @@ const { lang, data } = Astro.props;
   /* SP */
   @media (max-width: 768px) {
     .store-info {
-      padding: 60px 0;
+      padding: 60px var(--sp-padding);
     }
 
     .store-info-map {
