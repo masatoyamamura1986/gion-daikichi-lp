@@ -1,0 +1,204 @@
+---
+import type { Lang, StoreInfoResponse } from "../lib/microcms";
+import { localized, isSafeUrl } from "../lib/microcms";
+
+interface Props {
+  lang: Lang;
+  data: StoreInfoResponse;
+}
+
+const { lang, data } = Astro.props;
+---
+
+<section class="store-info" id="store-info" data-lang={lang}>
+  <div class="section-heading">
+    <h2>{lang === "ja" ? "店舗情報" : "Store Information"}</h2>
+  </div>
+
+  <!-- Google Map -->
+  <div class="store-info-map">
+    <iframe
+      src={data.mapEmbedUrl}
+      width="100%"
+      height="480"
+      style="border:0;"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+
+  <!-- 内観画像 + 詳細情報 -->
+  <div class="store-info-layout">
+    <div class="store-info-left">
+      {data.interiorImages.length > 0 && (
+        <img
+          src={data.interiorImages[0].image.url}
+          alt={localized(data.interiorImages[0], "alt", lang)}
+          width={data.interiorImages[0].image.width}
+          height={data.interiorImages[0].image.height}
+        />
+      )}
+    </div>
+    <div class="store-info-detail">
+      <!-- 住所 -->
+      <div class="store-info-row">
+        <span class="store-info-label">{lang === "ja" ? "住所" : "Address"}</span>
+        <span class="store-info-value">
+          {lang === "ja"
+            ? `〒${data.postalCode} ${data.address_ja}`
+            : data.address_en}
+        </span>
+      </div>
+
+      <!-- TEL -->
+      <div class="store-info-row">
+        <span class="store-info-label">TEL</span>
+        <span class="store-info-value">{data.tel}</span>
+      </div>
+
+      <!-- 営業時間 -->
+      <div class="store-info-row">
+        <span class="store-info-label">{lang === "ja" ? "営業時間" : "Hours"}</span>
+        <span class="store-info-value">{localized(data, "hours", lang)}</span>
+      </div>
+
+      <!-- 定休日 -->
+      <div class="store-info-row">
+        <span class="store-info-label">{lang === "ja" ? "定休日" : "Closed"}</span>
+        <span class="store-info-value">{localized(data, "closedDay", lang)}</span>
+      </div>
+
+      <!-- お支払い（任意フィールド） -->
+      {localized(data, "payment", lang) && (
+        <div class="store-info-row">
+          <span class="store-info-label">{lang === "ja" ? "お支払い" : "Payment"}</span>
+          <span class="store-info-value">{localized(data, "payment", lang)}</span>
+        </div>
+      )}
+
+      <!-- ご予約 -->
+      <div class="store-info-row">
+        <span class="store-info-label">{lang === "ja" ? "ご予約" : "Reservations"}</span>
+        <span class="store-info-value">{localized(data, "reservation", lang)}</span>
+      </div>
+
+      <!-- 系列店舗リンク -->
+      {data.affiliatedUrl && isSafeUrl(data.affiliatedUrl) && (
+        <div class="store-info-link">
+          <a href={data.affiliatedUrl} class="btn-outline" target="_blank" rel="noopener">
+            {lang === "ja" ? "系列店舗" : "Affiliated Locations"}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .store-info {
+    padding: 120px 0;
+  }
+
+  .store-info-map {
+    margin-bottom: 60px;
+  }
+
+  .store-info-map iframe {
+    width: 100%;
+  }
+
+  .store-info-layout {
+    display: flex;
+    gap: 80px;
+    width: 1024px;
+    margin: 0 auto;
+  }
+
+  .store-info-left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .store-info-left img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .store-info-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .store-info-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .store-info-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    color: #585858;
+    margin-bottom: 4px;
+  }
+
+  .store-info-value {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    line-height: 2;
+    color: #585858;
+  }
+
+  .store-info-link {
+    margin-top: 30px;
+  }
+
+  /* EN specific */
+  .store-info[data-lang="en"] .store-info-value {
+    letter-spacing: 0.05em;
+  }
+
+  /* SP */
+  @media (max-width: 768px) {
+    .store-info {
+      padding: 60px 0;
+    }
+
+    .store-info-map {
+      margin-bottom: 40px;
+    }
+
+    .store-info-map iframe {
+      height: 300px;
+    }
+
+    .store-info-layout {
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .store-info-left img {
+      aspect-ratio: 1 / 1;
+    }
+
+    .store-info-label {
+      font-size: 12px;
+    }
+
+    .store-info-value {
+      font-size: 14px;
+    }
+  }
+</style>

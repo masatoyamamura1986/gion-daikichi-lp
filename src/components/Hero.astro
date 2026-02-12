@@ -1,0 +1,149 @@
+---
+import type { Lang } from "../lib/microcms";
+
+interface Props {
+  lang: Lang;
+  slides: {
+    image: { url: string; width?: number; height?: number };
+    alt_ja: string;
+    alt_en: string;
+  }[];
+}
+
+const { lang, slides } = Astro.props;
+---
+
+<section class="hero" id="hero">
+  <div class="hero-slider">
+    {slides.map((slide, index) => (
+      <div class:list={["hero-slide", { active: index === 0 }]}>
+        <img
+          src={slide.image.url}
+          alt={lang === "ja" ? slide.alt_ja : slide.alt_en}
+          width={slide.image.width}
+          height={slide.image.height}
+        />
+      </div>
+    ))}
+  </div>
+
+  <div class="hero-logo-overlay">
+    <img
+      src="/images/logo.webp"
+      alt={lang === "ja" ? "祇園だいきち牧場 ロゴ" : "Gion Daikichi Ranch Logo"}
+    />
+  </div>
+
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll(".hero-slide");
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 5000);
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+  }
+
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-logo-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+  }
+
+  .hero-logo-overlay img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    margin-left: -20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    overflow: hidden;
+  }
+
+  .hero-scroll-line::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #ffffff;
+    animation: scrollDown 1.8s infinite;
+  }
+
+  /* SP */
+  @media (max-width: 768px) {
+    .hero {
+      height: 100vh;
+    }
+
+    .hero-logo-overlay {
+      margin-top: -80px;
+      margin-left: -80px;
+    }
+
+    .hero-logo-overlay img {
+      width: 160px;
+      height: 160px;
+    }
+  }
+</style>

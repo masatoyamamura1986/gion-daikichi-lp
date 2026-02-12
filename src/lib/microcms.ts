@@ -103,13 +103,13 @@ export interface FooterResponse {
 }
 
 // ヘルパー: 言語別フィールド取得（型安全）
-export function localized<T extends Record<string, unknown>>(
+export function localized<T extends object>(
   obj: T,
   field: string,
   lang: Lang,
 ): string {
   const key = `${field}_${lang}`;
-  const value = obj[key];
+  const value = (obj as Record<string, unknown>)[key];
   return typeof value === "string" ? value : "";
 }
 

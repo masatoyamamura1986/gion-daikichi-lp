@@ -1,0 +1,118 @@
+---
+import type { Lang } from "../lib/microcms";
+import { isSafeUrl } from "../lib/microcms";
+
+interface Props {
+  lang: Lang;
+  image: { url: string; width?: number; height?: number };
+  name: string;
+  price: string;
+  description: string;
+  movieUrl?: string;
+  movieLabel: string;
+}
+
+const { lang, image, name, price, description, movieUrl, movieLabel } =
+  Astro.props;
+---
+
+<div class="menu-item" data-lang={lang}>
+  <img src={image.url} alt={name} width={image.width} height={image.height} />
+  <div class="menu-item-info">
+    <h4 class="menu-item-name">{name}</h4>
+    <p class="menu-item-price">{price}</p>
+    <p class="menu-item-desc">{description}</p>
+    {movieUrl && isSafeUrl(movieUrl) && (
+      <a
+        href={movieUrl}
+        class="btn-outline-small"
+        target="_blank"
+        rel="noopener"
+      >
+        {movieLabel}
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1" />
+        </svg>
+      </a>
+    )}
+  </div>
+</div>
+
+<style>
+  .menu-item {
+    display: flex;
+    gap: 80px;
+    width: 100%;
+  }
+
+  .menu-item img {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .menu-item-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .menu-item-name {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    color: #585858;
+    margin-bottom: 12px;
+  }
+
+  .menu-item-price {
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    line-height: 2;
+    color: #585858;
+    margin-bottom: 16px;
+  }
+
+  .menu-item-desc {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    line-height: 2;
+    color: #585858;
+    margin-bottom: 20px;
+  }
+
+  /* EN specific */
+  .menu-item[data-lang="en"] .menu-item-name {
+    letter-spacing: 0.08em;
+  }
+
+  .menu-item[data-lang="en"] .menu-item-desc {
+    letter-spacing: 0.05em;
+  }
+
+  /* SP */
+  @media (max-width: 768px) {
+    .menu-item {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu-item img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .menu-item-name {
+      font-size: 17px;
+    }
+
+    .menu-item-price {
+      font-size: 16px;
+    }
+
+    .menu-item-desc {
+      font-size: 13px;
+    }
+  }
+</style>

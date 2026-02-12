@@ -1,0 +1,205 @@
+---
+import type { Lang } from "../lib/microcms";
+import { isSafeUrl } from "../lib/microcms";
+
+interface SnsLink {
+  platform: "instagram" | "tiktok" | "youtube";
+  url: string;
+}
+
+interface Props {
+  lang: Lang;
+  snsLinks: SnsLink[];
+}
+
+const { lang, snsLinks } = Astro.props;
+
+const navItems =
+  lang === "ja"
+    ? [
+        { href: "#hero", label: "トップ" },
+        { href: "#about", label: "祇園だいきち牧場について" },
+        { href: "#menu", label: "お品書き" },
+        { href: "#store-info", label: "店舗情報" },
+      ]
+    : [
+        { href: "#hero", label: "Top" },
+        { href: "#about", label: "About" },
+        { href: "#menu", label: "Menu" },
+        { href: "#store-info", label: "Store Information" },
+      ];
+
+const safeSnsLinks = snsLinks.filter((link) => isSafeUrl(link.url));
+---
+
+<!-- オーバーレイ -->
+<div class="nav-panel-overlay" id="nav-overlay"></div>
+
+<!-- パネル -->
+<nav class="nav-panel" id="nav-panel">
+  <!-- 閉じるボタン -->
+  <div class="nav-close" id="nav-close">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M6 6l12 12M18 6L6 18" stroke="#585858" stroke-width="1" />
+    </svg>
+  </div>
+
+  <!-- ナビリンク -->
+  <div class="nav-links">
+    {navItems.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </div>
+
+  <!-- SNS リンク -->
+  <div class="nav-sns">
+    {safeSnsLinks.map((link) => (
+      <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.platform}>
+        {link.platform === "instagram" && (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="#585858" stroke-width="1.5" />
+            <circle cx="12" cy="12" r="5" stroke="#585858" stroke-width="1.5" />
+            <circle cx="17.5" cy="6.5" r="1" fill="#585858" />
+          </svg>
+        )}
+        {link.platform === "tiktok" && (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6a2.6 2.6 0 0 1 2.6-2.6c.27 0 .53.04.78.12V9.57a5.74 5.74 0 0 0-.78-.05 5.76 5.76 0 0 0-5.76 5.76 5.76 5.76 0 0 0 5.76 5.76 5.76 5.76 0 0 0 5.76-5.76V9.36A7.35 7.35 0 0 0 20 10.64V7.5a4.28 4.28 0 0 1-3.4-1.68Z" fill="#585858" />
+          </svg>
+        )}
+        {link.platform === "youtube" && (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z" fill="#585858" />
+            <path d="m9.75 15.02 5.75-3.27-5.75-3.27v6.54Z" fill="#FFFFFF" />
+          </svg>
+        )}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const panel = document.getElementById("nav-panel");
+  const overlay = document.getElementById("nav-overlay");
+  const closeBtn = document.getElementById("nav-close");
+  const navLinks = panel?.querySelectorAll(".nav-links a");
+
+  function openNav(): void {
+    panel?.classList.add("open");
+    overlay?.classList.add("open");
+  }
+
+  function closeNav(): void {
+    panel?.classList.remove("open");
+    overlay?.classList.remove("open");
+  }
+
+  hamburger?.addEventListener("click", openNav);
+  closeBtn?.addEventListener("click", closeNav);
+  overlay?.addEventListener("click", closeNav);
+  navLinks?.forEach((link) => {
+    link.addEventListener("click", closeNav);
+  });
+</script>
+
+<style>
+  .nav-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.4s;
+  }
+
+  .nav-panel.open {
+    right: 0;
+  }
+
+  .nav-panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 190;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s,
+      visibility 0.4s;
+  }
+
+  .nav-panel-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .nav-links a {
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: #585858;
+    transition: opacity 0.3s;
+  }
+
+  .nav-links a:hover {
+    opacity: 0.6;
+  }
+
+  .nav-sns {
+    display: flex;
+    gap: 24px;
+  }
+
+  .nav-sns a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+  }
+
+  .nav-sns a:hover {
+    opacity: 0.6;
+  }
+
+  /* SP */
+  @media (max-width: 768px) {
+    .nav-panel {
+      right: -100%;
+      width: 100%;
+    }
+  }
+</style>
