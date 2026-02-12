@@ -80,6 +80,8 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
   .menu {
     padding: 120px 0;
     border-bottom: 1px solid #e8e8e8;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
   .menu-sub-heading {
@@ -97,9 +99,6 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
     flex-direction: column;
     gap: 60px;
     margin-bottom: 100px;
-    max-width: var(--content-width);
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .menu-collab {
@@ -107,9 +106,6 @@ const { lang, recommended, collaboration, otherMenuUrl } = Astro.props;
     flex-direction: column;
     gap: 60px;
     margin-bottom: 80px;
-    max-width: var(--content-width);
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .menu-bottom {
