@@ -9,7 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "astro": "^5.17.1",
-    "microcms-js-sdk": "^3.3.0"
+    "microcms-js-sdk": "^3.3.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "node-html-parser": "^7.0.2",
+    "tsx": "^4.21.0"
   }
 }

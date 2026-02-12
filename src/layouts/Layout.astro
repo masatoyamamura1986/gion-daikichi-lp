@@ -1,0 +1,65 @@
+---
+import type { Lang } from "../lib/microcms";
+import "../styles/global.css";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { lang, title, description, ogImage } = Astro.props;
+
+const SITE_URL = "https://1129kyoto.jp";
+const canonicalUrl = lang === "ja" ? `${SITE_URL}/` : `${SITE_URL}/en/`;
+const ogLocale = lang === "ja" ? "ja_JP" : "en_US";
+const siteName = lang === "ja" ? "祇園だいきち牧場" : "Gion Daikichi Ranch";
+
+const fontUrl =
+  lang === "ja"
+    ? "https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
+    : "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap";
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ja" href={`${SITE_URL}/`} />
+    <link rel="alternate" hreflang="en" href={`${SITE_URL}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/`} />
+
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={ogLocale} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={fontUrl} rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
