@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>祇園だいきち牧場 | 祇園で味わうA5近江牛</title>
+  <meta name="description" content="祇園だいきち牧場は、自社牧場で育てたA5ランク近江牛を祇園で楽しめるお店です。名物ひつまぶしやステーキ重、すき焼き御膳など、こだわりのメニューをご用意しています。">
+  <meta name="keywords" content="祇園だいきち牧場,近江牛,A5,ひつまぶし,ステーキ重,すき焼き,祇園,京都">
+  <meta property="og:title" content="祇園だいきち牧場 | 祇園で味わうA5近江牛">
+  <meta property="og:description" content="自社牧場で育てたA5ランク近江牛を祇園で。名物ひつまぶしやステーキ重、すき焼き御膳などをご用意しています。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://1129kyoto.jp/">
+  <meta property="og:image" content="https://1129kyoto.jp/images/logo.webp">
+  <meta property="og:site_name" content="祇園だいきち牧場">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="祇園だいきち牧場 | 祇園で味わうA5近江牛">
+  <meta name="twitter:description" content="自社牧場で育てたA5ランク近江牛を祇園で。名物ひつまぶしやステーキ重、すき焼き御膳などをご用意しています。">
+  <meta name="twitter:image" content="https://1129kyoto.jp/images/logo.webp">
+  <link rel="canonical" href="https://1129kyoto.jp/">
+  <link rel="alternate" hreflang="ja" href="https://1129kyoto.jp/">
+  <link rel="alternate" hreflang="en" href="https://1129kyoto.jp/en/">
+  <link rel="alternate" hreflang="x-default" href="https://1129kyoto.jp/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== BASE ===== */
+    body {
+      font-family: 'Noto Serif JP', serif;
+      color: #585858;
+      background: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .wrapper {
+      width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ===== HEADER NAV ===== */
+    .header-nav {
+      position: fixed;
+      top: 32px;
+      right: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 100;
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: #585858;
+    }
+
+    .lang-switch a {
+      color: #585858;
+      transition: opacity 0.3s;
+    }
+
+    .lang-switch a:hover {
+      opacity: 0.6;
+    }
+
+    .lang-switch .active {
+      font-weight: 600;
+    }
+
+    .lang-switch .separator {
+      color: #585858;
+      opacity: 0.4;
+    }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: #585858;
+    }
+
+    /* ===== NAV PANEL ===== */
+    .nav-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: #FFFFFF;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.4s;
+    }
+
+    .nav-panel.open {
+      right: 0;
+    }
+
+    .nav-panel-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 190;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s, visibility 0.4s;
+    }
+
+    .nav-panel-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-close {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .nav-links a {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      color: #585858;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    .nav-sns {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-sns a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+
+    .nav-sns a:hover {
+      opacity: 0.6;
+    }
+
+    /* ===== SECTION HEADING (shared) ===== */
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      color: #585858;
+      text-align: center;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #585858;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #585858;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      transition: opacity 0.3s;
+    }
+
+    .btn-outline:hover {
+      opacity: 0.6;
+    }
+
+    .btn-outline-small {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 8px;
+      color: #585858;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #585858;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      transition: opacity 0.3s;
+    }
+
+    .btn-outline-small:hover {
+      opacity: 0.6;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-logo-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -100px;
+    }
+
+    .hero-logo-overlay img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      margin-left: -20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll span {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: #FFFFFF;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      background: #FFFFFF;
+      animation: scrollDown 1.8s infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { opacity: 0; transform: translateY(-100%); }
+      40% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(100%); }
+    }
+
+    /* ===== CATCHCOPY ===== */
+    .catchcopy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .catchcopy h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      color: #585858;
+    }
+
+    .catchcopy p {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+      margin-top: 20px;
+      text-align: justify;
+      text-align-last: justify;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 120px 0;
+      background: #F7F7F7;
+    }
+
+    .about-content {
+      display: flex;
+      gap: 80px;
+      width: 1024px;
+      margin: 0 auto;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 0;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+    }
+
+    .about-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .about-body .section-heading {
+      align-items: flex-start;
+    }
+
+    .about-body .section-heading h2 {
+      text-align: left;
+    }
+
+    .about-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+      margin-bottom: 50px;
+    }
+
+    .about-buttons {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* ===== MENU ===== */
+    .menu {
+      padding: 120px 0;
+      border-bottom: 1px solid #E8E8E8;
+    }
+
+    .menu-sub-heading {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      color: #585858;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .menu-recommended {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      margin-bottom: 100px;
+    }
+
+    .menu-item {
+      display: flex;
+      gap: 80px;
+      width: 100%;
+    }
+
+    .menu-item img {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .menu-item-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .menu-item-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      color: #585858;
+      margin-bottom: 12px;
+    }
+
+    .menu-item-price {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+      margin-bottom: 16px;
+    }
+
+    .menu-item-desc {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+      margin-bottom: 20px;
+    }
+
+    .menu-collab {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      margin-bottom: 80px;
+    }
+
+    .menu-bottom {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ===== STORE INFO ===== */
+    .store-info {
+      padding: 120px 0;
+    }
+
+    .store-info-map {
+      margin-bottom: 60px;
+    }
+
+    .store-info-map img {
+      width: 100%;
+    }
+
+    .store-info-layout {
+      display: flex;
+      gap: 80px;
+      width: 1024px;
+      margin: 0 auto;
+    }
+
+    .store-info-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .store-info-left img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+    }
+
+    .store-info-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .store-info-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .store-info-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      color: #585858;
+      margin-bottom: 4px;
+    }
+
+    .store-info-value {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+    }
+
+    .store-info-link {
+      margin-top: 30px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #FFFFFF;
+      color: #585858;
+      border-top: 1px solid #E8E8E8;
+      padding: 60px 80px 40px;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-nav a {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: #585858;
+      transition: opacity 0.3s;
+    }
+
+    .footer-nav a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .footer-logo img {
+      width: 160px;
+      height: 160px;
+    }
+
+    .footer-address {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      text-align: center;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      color: #585858;
+    }
+
+    .footer-tel {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      text-align: center;
+      letter-spacing: 0.08em;
+      margin-bottom: 30px;
+      color: #585858;
+    }
+
+    .footer-sns {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-sns a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+
+    .footer-sns a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-copyright {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      text-align: center;
+      color: #585858;
+      opacity: 0.7;
+    }
+
+    /* ===== SP (max-width: 768px) ===== */
+    @media (max-width: 768px) {
+
+      /* BASE */
+      .wrapper {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      /* HEADER NAV */
+      .header-nav {
+        top: 20px;
+        right: 20px;
+        gap: 16px;
+      }
+
+      /* NAV PANEL */
+      .nav-panel {
+        right: -100%;
+        width: 100%;
+      }
+
+      /* SECTION HEADING */
+      .section-heading {
+        margin-bottom: 40px;
+      }
+
+      .section-heading h2 {
+        font-size: 20px;
+      }
+
+      /* HERO */
+      .hero {
+        height: 100vh;
+      }
+
+      .hero-logo-overlay {
+        margin-top: -80px;
+        margin-left: -80px;
+      }
+
+      .hero-logo-overlay img {
+        width: 160px;
+        height: 160px;
+      }
+
+      /* CATCHCOPY */
+      .catchcopy {
+        padding: 50px 0;
+      }
+
+      .catchcopy h1 {
+        font-size: 22px;
+      }
+
+      .catchcopy p {
+        font-size: 14px;
+      }
+
+      /* ABOUT */
+      .about {
+        padding: 60px 0;
+      }
+
+      .about-content {
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .about-image {
+        aspect-ratio: 1 / 1;
+      }
+
+      .about-body .section-heading {
+        align-items: center;
+      }
+
+      .about-body .section-heading h2 {
+        text-align: center;
+      }
+
+      .about-text {
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+
+      .about-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      /* MENU */
+      .menu {
+        padding: 60px 0;
+      }
+
+      .menu-sub-heading {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+      .menu-recommended {
+        gap: 50px;
+        margin-bottom: 60px;
+      }
+
+      .menu-item {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .menu-item img {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .menu-item-name {
+        font-size: 17px;
+      }
+
+      .menu-item-price {
+        font-size: 16px;
+      }
+
+      .menu-item-desc {
+        font-size: 13px;
+      }
+
+      .menu-collab {
+        gap: 50px;
+        margin-bottom: 50px;
+      }
+
+      /* STORE INFO */
+      .store-info {
+        padding: 60px 0;
+      }
+
+      .store-info-map {
+        margin-bottom: 40px;
+      }
+
+      .store-info-map iframe {
+        height: 300px;
+      }
+
+      .store-info-layout {
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .store-info-left img {
+        aspect-ratio: 1 / 1;
+      }
+
+      .store-info-label {
+        font-size: 12px;
+      }
+
+      .store-info-value {
+        font-size: 14px;
+      }
+
+      /* FOOTER */
+      .footer {
+        padding: 40px 20px 30px;
+      }
+
+      .footer-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .footer-logo img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .footer-address {
+        font-size: 12px;
+      }
+
+      .footer-tel {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER NAV -->
+<div class="header-nav">
+  <div class="lang-switch">
+    <a href="/" class="active">JP</a>
+    <span class="separator">/</span>
+    <a href="/en/">EN</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<!-- NAV PANEL -->
+<div class="nav-panel-overlay" id="nav-overlay"></div>
+<nav class="nav-panel" id="nav-panel">
+  <div class="nav-close" id="nav-close">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#585858" stroke-width="1"/></svg>
+  </div>
+  <div class="nav-links">
+    <a href="#hero">トップ</a>
+    <a href="#about">祇園だいきち牧場について</a>
+    <a href="#menu">お品書き</a>
+    <a href="#store-info">店舗情報</a>
+  </div>
+  <div class="nav-sns">
+    <a href="https://www.instagram.com/gion.daikichibeef" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#585858" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#585858" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#585858"/></svg></a>
+    <a href="https://www.tiktok.com/@gion.daikichibeef" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6a2.6 2.6 0 0 1 2.6-2.6c.27 0 .53.04.78.12V9.57a5.74 5.74 0 0 0-.78-.05 5.76 5.76 0 0 0-5.76 5.76 5.76 5.76 0 0 0 5.76 5.76 5.76 5.76 0 0 0 5.76-5.76V9.36A7.35 7.35 0 0 0 20 10.64V7.5a4.28 4.28 0 0 1-3.4-1.68Z" fill="#585858"/></svg></a>
+    <a href="https://youtube.com/channel/UCylR4wY3H3f3yQqHagrWZjQ" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z" fill="#585858"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27v6.54Z" fill="#FFFFFF"/></svg></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-slider">
+    <div class="hero-slide active">
+      <img src="images/hero.webp" alt="近江だいきち牛 ステーキ重">
+    </div>
+    <div class="hero-slide">
+      <img src="images/hitsumabushi-hero.webp" alt="近江だいきち牛 ひつまぶし">
+    </div>
+    <div class="hero-slide">
+      <img src="images/cow.webp" alt="近江だいきち牛">
+    </div>
+    <div class="hero-slide">
+      <img src="images/farm.webp" alt="だいきち牧場">
+    </div>
+  </div>
+  <div class="hero-logo-overlay">
+    <img src="images/logo.webp" alt="祇園だいきち牧場 ロゴ">
+  </div>
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<div class="wrapper">
+
+  <!-- CATCHCOPY -->
+  <div class="catchcopy">
+    <h1>祇園で味わう、里山育ちのA5近江牛</h1>
+    <p>自社牧場で育てた近江だいきち牛を、<br>名物ひつまぶしから夜のコースまで</p>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-content">
+      <img class="about-image" src="images/exterior.webp" alt="祇園だいきち牧場 外観">
+      <div class="about-body">
+        <div class="section-heading">
+          <h2>祇園だいきち牧場について</h2>
+        </div>
+        <p class="about-text">祇園だいきち牧場は、里山の自社牧場で育てたA5ランク近江牛を楽しめるお店です。創業1896年から4代続く大吉商店の「近江だいきち牛」を使い、名物ひつまぶしやステーキ重、すき焼き重・すき焼き御膳などのオリジナルメニューをご用意。夜は近江牛の魅力をコース仕立てでお楽しみいただけます。さらに、創業1969年「京のカレーうどん 味味香」とコラボした、限定オリジナル3種の近江牛カレーうどんもご用意しています。</p>
+        <div class="about-buttons">
+          <a href="http://1129.co.jp/company/" class="btn-outline" target="_blank" rel="noopener">大吉商店株式会社について<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <a href="https://daikichibeef.jp/farm" class="btn-outline" target="_blank" rel="noopener">近江だいきち牛について<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="section-heading">
+      <h2>お品書き</h2>
+
+    </div>
+
+    <!-- おすすめ料理 -->
+    <h3 class="menu-sub-heading">おすすめ料理</h3>
+    <div class="menu-recommended">
+
+      <!-- ひつまぶし -->
+      <div class="menu-item">
+        <img src="images/hitsumabushi.webp" alt="近江だいきち牛 ひつまぶし">
+        <div class="menu-item-info">
+          <h4 class="menu-item-name">近江だいきち牛 ひつまぶし（ロース1.5倍）</h4>
+          <p class="menu-item-price">¥5,455（税込）</p>
+          <p class="menu-item-desc">だいきち近江牛を焼き上げた名物ひつまぶしで、ご飯の中に近江牛のコンビーフが入っています。3種の味と京出汁、またはピリ辛チゲで味の変化を楽しみながらお召し上がりください。</p>
+          <a href="https://www.instagram.com/reel/DRn6065jwec/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">動画<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+        </div>
+      </div>
+
+      <!-- ステーキ重 -->
+      <div class="menu-item">
+        <img src="images/steak-ju.webp" alt="近江だいきち牛 ステーキ重">
+        <div class="menu-item-info">
+          <h4 class="menu-item-name">近江だいきち牛 ステーキ重（ロース1.5倍）</h4>
+          <p class="menu-item-price">¥5,318（税込）</p>
+          <p class="menu-item-desc">近江の地で作られた天然醸造仕込みの濃口醤油を使用したオリジナル特製たれで焼き上げた贅沢な銘品です。ロースはとろけるような舌触りと独自のコクを味わって頂けます。赤身はお肉本来の食感と旨みを堪能して頂けます。</p>
+          <a href="https://www.instagram.com/reel/DRqlHRSj6wS/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">動画<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+        </div>
+      </div>
+
+      <!-- すき御膳 -->
+      <div class="menu-item">
+        <img src="images/suki-gozen.webp" alt="近江だいきち牛 すき御膳">
+        <div class="menu-item-info">
+          <h4 class="menu-item-name">近江だいきち牛 すき御膳（ロース）</h4>
+          <p class="menu-item-price">¥4,091（税込）</p>
+          <p class="menu-item-desc">自家製割下でお客様ご自身が炊き上げるすき焼きです。多彩な具材と自社牧場産だいきち近江牛をお楽しみください。</p>
+          <a href="https://www.instagram.com/reel/DR_h0R4D3rv/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">動画<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 味味香コラボメニュー -->
+    <h3 class="menu-sub-heading">味味香コラボメニュー</h3>
+    <div class="menu-collab">
+
+      <!-- カレーうどん -->
+      <div class="menu-item">
+        <img src="images/sukiyaki-udon.webp" alt="近江だいきち牛すきやきカレーうどん">
+        <div class="menu-item-info">
+          <h4 class="menu-item-name">近江だいきち牛すきやきカレーうどん</h4>
+          <p class="menu-item-price">¥2,500（税込）</p>
+          <p class="menu-item-desc">昆布と鰹の旨味を引き出した「旨みだし」に厳選された11種類のスパイスを加え、あんかけに仕上げたのが「京のカレーうどん」です。自社牧場産の"近江だいきち牛"のロース肉を自家製割下で味付けした、「和牛すき焼き」の甘くて濃厚な食感と、厚切りのあげと九条ねぎで、祇園味味香オリジナルカレーうどんの旨味と食感をご賞味ください。</p>
+          <a href="https://mimikou.jp/aboutmimiko/" class="btn-outline-small" target="_blank" rel="noopener">祇園味味香<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- その他のメニューボタン -->
+    <div class="menu-bottom">
+      <a href="#" class="btn-outline">その他のメニュー<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+    </div>
+
+  </section>
+
+  <!-- STORE INFO -->
+  <section class="store-info" id="store-info">
+    <div class="section-heading">
+      <h2>店舗情報</h2>
+    </div>
+    <div class="store-info-map">
+      <iframe src="https://www.google.com/maps?q=京都府京都市東山区祇園町南側528番地6&output=embed" width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="store-info-layout">
+      <div class="store-info-left">
+        <!-- スライダー想定（静的に1枚目を表示） -->
+        <img src="images/interior-1f.webp" alt="祇園だいきち牧場 内観1F">
+      </div>
+      <div class="store-info-detail">
+        <div class="store-info-row">
+          <span class="store-info-label">住所</span>
+          <span class="store-info-value">〒605-0074 京都府京都市東山区祇園町南側528番地6</span>
+        </div>
+        <div class="store-info-row">
+          <span class="store-info-label">TEL</span>
+          <span class="store-info-value">075-746-4129</span>
+        </div>
+        <div class="store-info-row">
+          <span class="store-info-label">営業時間</span>
+          <span class="store-info-value">11:00〜15:00、17:00〜20:00</span>
+        </div>
+        <div class="store-info-row">
+          <span class="store-info-label">定休日</span>
+          <span class="store-info-value">日曜日</span>
+        </div>
+        <div class="store-info-row">
+          <span class="store-info-label">お支払い</span>
+          <span class="store-info-value">※確認中</span>
+        </div>
+        <div class="store-info-row">
+          <span class="store-info-label">ご予約</span>
+          <span class="store-info-value">承っておりません</span>
+        </div>
+        <div class="store-info-link">
+          <a href="https://daikichibeef.jp/shop" class="btn-outline" target="_blank" rel="noopener">系列店舗<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <nav class="footer-nav">
+    <a href="#about">祇園だいきちについて</a>
+    <a href="#menu">お品書き</a>
+    <a href="#store-info">店舗情報</a>
+  </nav>
+  <div class="footer-logo">
+    <img src="images/logo-footer.webp" alt="祇園だいきち牧場 ロゴ">
+  </div>
+  <p class="footer-address">〒605-0074 京都府京都市東山区祇園町南側528番地6</p>
+  <p class="footer-tel">TEL: 075-746-4129</p>
+  <div class="footer-sns">
+    <a href="https://www.instagram.com/gion.daikichibeef" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#585858" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#585858" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#585858"/></svg></a>
+    <a href="https://www.tiktok.com/@gion.daikichibeef" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6a2.6 2.6 0 0 1 2.6-2.6c.27 0 .53.04.78.12V9.57a5.74 5.74 0 0 0-.78-.05 5.76 5.76 0 0 0-5.76 5.76 5.76 5.76 0 0 0 5.76 5.76 5.76 5.76 0 0 0 5.76-5.76V9.36A7.35 7.35 0 0 0 20 10.64V7.5a4.28 4.28 0 0 1-3.4-1.68Z" fill="#585858"/></svg></a>
+    <a href="https://youtube.com/channel/UCylR4wY3H3f3yQqHagrWZjQ" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58Z" fill="#585858"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27v6.54Z" fill="#FFFFFF"/></svg></a>
+  </div>
+  <p class="footer-copyright">&copy; 2026 祇園だいきち牧場 All Rights Reserved.</p>
+</footer>
+
+<script>
+(function() {
+  // Hero slider
+  var slides = document.querySelectorAll('.hero-slide');
+  var current = 0;
+  setInterval(function() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+
+  // Nav panel
+  var hamburger = document.getElementById('hamburger');
+  var panel = document.getElementById('nav-panel');
+  var overlay = document.getElementById('nav-overlay');
+  var close = document.getElementById('nav-close');
+  var links = panel.querySelectorAll('.nav-links a');
+
+  function openNav() {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+  }
+  function closeNav() {
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  hamburger.addEventListener('click', openNav);
+  close.addEventListener('click', closeNav);
+  overlay.addEventListener('click', closeNav);
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', closeNav);
+  }
+})();
+</script>
+
+</body>
+</html>
