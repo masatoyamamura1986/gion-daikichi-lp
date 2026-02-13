@@ -7,9 +7,10 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { lang, title, description, ogImage } = Astro.props;
+const { lang, title, description, ogImage, jsonLd } = Astro.props;
 
 const SITE_URL = "https://1129kyoto.jp";
 const canonicalUrl = lang === "ja" ? `${SITE_URL}/` : `${SITE_URL}/en/`;
@@ -63,6 +64,11 @@ const fontUrl =
     <link rel="preload" href={fontUrl} as="style" />
     <link href={fontUrl} rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href={fontUrl} rel="stylesheet" /></noscript>
+
+    <!-- JSON-LD 構造化データ -->
+    {jsonLd && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
   </head>
   <body>
     <slot />

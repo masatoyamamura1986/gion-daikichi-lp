@@ -7,6 +7,7 @@ import type {
   SiteDataResponse,
   MenuItem,
 } from "../../lib/microcms";
+import { buildRestaurantJsonLd } from "../../lib/jsonld";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import NavPanel from "../../components/NavPanel.astro";
@@ -30,6 +31,13 @@ const [siteData, recommended, collaboration] = await Promise.all([
     queries: { filters: "category[contains]collaboration", orders: "sortOrder" },
   }),
 ]);
+
+const jsonLd = buildRestaurantJsonLd(
+  siteData,
+  recommended.contents,
+  collaboration.contents,
+  lang,
+);
 ---
 
 <Layout
@@ -37,6 +45,7 @@ const [siteData, recommended, collaboration] = await Promise.all([
   title={localized(siteData, "title", lang)}
   description={localized(siteData, "description", lang)}
   ogImage={siteData.ogImage?.url}
+  jsonLd={jsonLd}
 >
   <Header lang={lang} />
   <NavPanel lang={lang} snsLinks={siteData.snsLinks} />
