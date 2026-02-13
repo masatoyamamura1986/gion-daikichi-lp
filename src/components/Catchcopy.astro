@@ -44,8 +44,7 @@ const { lang, mainCopy, subCopy } = Astro.props;
 
   /* JA specific */
   .catchcopy[data-lang="ja"] p {
-    text-align: justify;
-    text-align-last: justify;
+    text-align: right;
   }
 
   /* EN specific */
@@ -54,6 +53,7 @@ const { lang, mainCopy, subCopy } = Astro.props;
   }
 
   .catchcopy[data-lang="en"] p {
+    text-align: right;
     letter-spacing: 0.05em;
     max-width: 640px;
   }
