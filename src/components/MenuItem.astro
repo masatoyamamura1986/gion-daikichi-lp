@@ -20,7 +20,7 @@ const taxLabel = lang === "ja" ? "（税込）" : " (tax included)";
 ---
 
 <div class="menu-item" data-lang={lang}>
-  <img src={image.url} alt={name} width={image.width} height={image.height} />
+  <img src={`${image.url}?w=600&fm=webp&q=80`} alt={name} width={image.width} height={image.height} loading="lazy" decoding="async" />
   <div class="menu-item-info">
     <h4 class="menu-item-name">{name}</h4>
     <p class="menu-item-price">{formattedPrice}<span class="tax-label">{taxLabel}</span></p>

@@ -18,10 +18,13 @@ const { lang, slides } = Astro.props;
     {slides.map((slide, index) => (
       <div class:list={["hero-slide", { active: index === 0 }]}>
         <img
-          src={slide.image.url}
+          src={`${slide.image.url}?w=1280&fm=webp&q=75`}
           alt={lang === "ja" ? slide.alt_ja : slide.alt_en}
           width={slide.image.width}
           height={slide.image.height}
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 ? "high" : undefined}
+          decoding={index === 0 ? "sync" : "async"}
         />
       </div>
     ))}
@@ -31,6 +34,8 @@ const { lang, slides } = Astro.props;
     <img
       src="/images/logo.webp"
       alt={lang === "ja" ? "祇園だいきち牧場 ロゴ" : "Gion Daikichi Ranch Logo"}
+      width="200"
+      height="200"
     />
   </div>
 

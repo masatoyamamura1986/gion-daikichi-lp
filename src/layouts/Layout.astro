@@ -54,10 +54,15 @@ const fontUrl =
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-    <!-- Fonts -->
+    <!-- Preconnect: Fonts + microCMS Images -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href={fontUrl} rel="stylesheet" />
+    <link rel="preconnect" href="https://images.microcms-assets.io" crossorigin />
+
+    <!-- Fonts: 非同期読み込み -->
+    <link rel="preload" href={fontUrl} as="style" />
+    <link href={fontUrl} rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href={fontUrl} rel="stylesheet" /></noscript>
   </head>
   <body>
     <slot />

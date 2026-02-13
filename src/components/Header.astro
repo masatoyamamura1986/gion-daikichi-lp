@@ -20,10 +20,10 @@ const { lang } = Astro.props;
       <span class="active">EN</span>
     )}
   </div>
-  <div class="hamburger" id="hamburger">
+  <button class="hamburger" id="hamburger" type="button" aria-label={lang === "ja" ? "メニューを開く" : "Open menu"} aria-expanded="false">
     <span></span>
     <span></span>
-  </div>
+  </button>
 </div>
 
 <style>
@@ -72,6 +72,9 @@ const { lang } = Astro.props;
     width: 36px;
     height: 36px;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
   }
 
   .hamburger span {

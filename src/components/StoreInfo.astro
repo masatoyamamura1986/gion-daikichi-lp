@@ -25,6 +25,7 @@ const { lang, data } = Astro.props;
       allowfullscreen
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
+      title={lang === "ja" ? "祇園だいきち牧場 Google Map" : "Gion Daikichi Ranch Google Map"}
     ></iframe>
   </div>
 
@@ -33,10 +34,12 @@ const { lang, data } = Astro.props;
     <div class="store-info-left">
       {data.interiorImages.length > 0 && (
         <img
-          src={data.interiorImages[0].image.url}
+          src={`${data.interiorImages[0].image.url}?w=600&fm=webp&q=80`}
           alt={localized(data.interiorImages[0], "alt", lang)}
           width={data.interiorImages[0].image.width}
           height={data.interiorImages[0].image.height}
+          loading="lazy"
+          decoding="async"
         />
       )}
     </div>

@@ -34,6 +34,10 @@ const { lang, storeInfo, footer } = Astro.props;
     <img
       src="/images/logo-footer.webp"
       alt={lang === "ja" ? "祇園だいきち牧場 ロゴ" : "Gion Daikichi Ranch Logo"}
+      width="160"
+      height="160"
+      loading="lazy"
+      decoding="async"
     />
   </div>
 
@@ -153,8 +157,7 @@ const { lang, storeInfo, footer } = Astro.props;
   .footer-copyright {
     font-size: 12px;
     text-align: center;
-    color: #585858;
-    opacity: 0.7;
+    color: #767676;
   }
 
   /* EN specific */

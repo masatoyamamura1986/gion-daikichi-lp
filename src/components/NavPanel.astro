@@ -38,11 +38,11 @@ const safeSnsLinks = snsLinks.filter((link) => isSafeUrl(link.url));
 <!-- パネル -->
 <nav class="nav-panel" id="nav-panel">
   <!-- 閉じるボタン -->
-  <div class="nav-close" id="nav-close">
-    <svg viewBox="0 0 24 24" fill="none">
+  <button class="nav-close" id="nav-close" type="button" aria-label={lang === "ja" ? "メニューを閉じる" : "Close menu"}>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M6 6l12 12M18 6L6 18" stroke="#585858" stroke-width="1" />
     </svg>
-  </div>
+  </button>
 
   <!-- ナビリンク -->
   <div class="nav-links">
@@ -88,11 +88,13 @@ const safeSnsLinks = snsLinks.filter((link) => isSafeUrl(link.url));
   function openNav(): void {
     panel?.classList.add("open");
     overlay?.classList.add("open");
+    hamburger?.setAttribute("aria-expanded", "true");
   }
 
   function closeNav(): void {
     panel?.classList.remove("open");
     overlay?.classList.remove("open");
+    hamburger?.setAttribute("aria-expanded", "false");
   }
 
   hamburger?.addEventListener("click", openNav);
@@ -153,6 +155,9 @@ const safeSnsLinks = snsLinks.filter((link) => isSafeUrl(link.url));
     display: flex;
     align-items: center;
     justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
   }
 
   .nav-close svg {

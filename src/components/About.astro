@@ -14,10 +14,12 @@ const { lang, data } = Astro.props;
   <div class="about-content">
     <img
       class="about-image"
-      src={data.image.url}
+      src={`${data.image.url}?w=600&fm=webp&q=80`}
       alt={localized(data, "imageAlt", lang)}
       width={data.image.width}
       height={data.image.height}
+      loading="lazy"
+      decoding="async"
     />
     <div class="about-body">
       <div class="section-heading">
