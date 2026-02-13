@@ -8,11 +8,14 @@ interface Props {
 }
 
 const { lang, mainCopy, subCopy } = Astro.props;
+const spSubCopy = lang === "ja"
+  ? subCopy.replace("を、", 'を、<br class="sp-br">')
+  : subCopy;
 ---
 
 <div class="catchcopy" data-lang={lang}>
   <h1 set:html={mainCopy} />
-  <p set:html={subCopy} />
+  <p set:html={spSubCopy} />
 </div>
 
 <style>
@@ -58,6 +61,10 @@ const { lang, mainCopy, subCopy } = Astro.props;
     max-width: 640px;
   }
 
+  :global(.sp-br) {
+    display: none;
+  }
+
   /* SP */
   @media (max-width: 768px) {
     .catchcopy {
@@ -74,6 +81,10 @@ const { lang, mainCopy, subCopy } = Astro.props;
 
     .catchcopy[data-lang="ja"] p {
       text-align: center;
+    }
+
+    :global(.sp-br) {
+      display: block;
     }
   }
 </style>
