@@ -165,7 +165,8 @@ microCMS で管理する API の一覧とフィールド定義。
 | `category` | カテゴリ | セレクト（単一） | Yes | `recommended` or `collaboration` |
 | `collabLabel_ja` | コラボ先名（日） | テキスト | No | コラボ先の表示名 |
 | `collabLabel_en` | コラボ先名（英） | テキスト | No | Collaboration partner name |
-| `collaborationUrl` | コラボ先 URL | テキスト | No | コラボ先リンク |
+| `collaborationUrl_ja` | コラボ先 URL（日） | テキスト | No | コラボ先リンク（日本語版） |
+| `collaborationUrl_en` | コラボ先 URL（英） | テキスト | No | コラボ先リンク（英語版） |
 | `sortOrder` | 表示順 | 数値 | Yes | 表示順（昇順） |
 
 ### カテゴリ選択肢（単一選択）
@@ -223,7 +224,8 @@ function formatPrice(price: number, lang: "ja" | "en"): string {
       "category": "collaboration",
       "collabLabel_ja": "祇園味味香",
       "collabLabel_en": "Gion Mimiko",
-      "collaborationUrl": "https://mimikou.jp/kyoto-curry-udon-flavor/",
+      "collaborationUrl_ja": "https://mimikou.jp/",
+      "collaborationUrl_en": "https://mimikou.jp/kyoto-curry-udon-flavor/",
       "sortOrder": 1
     }
   ],

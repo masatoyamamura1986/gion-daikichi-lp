@@ -64,7 +64,8 @@ export interface MenuItem extends MicroCMSListContent {
   category: ("recommended" | "collaboration")[];
   collabLabel_ja?: string;
   collabLabel_en?: string;
-  collaborationUrl?: string;
+  collaborationUrl_ja?: string;
+  collaborationUrl_en?: string;
   sortOrder: number;
 }
 
