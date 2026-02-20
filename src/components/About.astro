@@ -46,8 +46,6 @@ const { lang, data } = Astro.props;
 
 <style>
   .about {
-    padding: 120px 0;
-    background: #f7f7f7;
     max-width: var(--max-width);
     margin: 0 auto;
   }
@@ -55,8 +53,10 @@ const { lang, data } = Astro.props;
   .about-content {
     display: flex;
     gap: 80px;
-    width: 1024px;
+    width: 1200px;
     margin: 0 auto;
+    border: 1px solid #E8E8E8;
+    padding: 60px;
   }
 
   .about-image {
@@ -103,15 +103,13 @@ const { lang, data } = Astro.props;
 
   /* SP */
   @media (max-width: 768px) {
-    .about {
-      padding: 60px var(--sp-padding);
-    }
 
     .about-content {
       flex-direction: column;
       gap: 30px;
       width: 100%;
-      padding: 0 20px;
+      margin: 0 20px;
+      padding: 30px 20px;
     }
 
     .about-image {
