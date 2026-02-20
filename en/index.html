@@ -377,16 +377,13 @@
     }
 
     /* ===== ABOUT ===== */
-    .about {
-      padding: 120px 0;
-      background: #F7F7F7;
-    }
-
     .about-content {
       display: flex;
       gap: 80px;
-      width: 1024px;
+      width: 1200px;
       margin: 0 auto;
+      border: 1px solid #E8E8E8;
+      padding: 60px;
     }
 
     .about-image {
@@ -430,6 +427,14 @@
     .menu {
       padding: 120px 0;
       border-bottom: 1px solid #E8E8E8;
+    }
+
+    .menu-content-bg {
+      background-color: #F7F7F7;
+      padding: 80px 0;
+      margin: 0 calc(-50vw + 50%);
+      padding-left: calc(50vw - 50%);
+      padding-right: calc(50vw - 50%);
     }
 
     .menu-sub-heading {
@@ -717,10 +722,6 @@
       }
 
       /* ABOUT */
-      .about {
-        padding: 60px 0;
-      }
-
       .about-content {
         flex-direction: column;
         gap: 30px;
@@ -890,10 +891,10 @@
 <section class="hero" id="hero">
   <div class="hero-slider">
     <div class="hero-slide active">
-      <img src="../images/hero.webp" alt="Omi Daikichi Beef Steak Bowl">
+      <img src="../images/steak-ju-loin-hero.webp" alt="Omi Daikichi Beef Steak Bowl">
     </div>
     <div class="hero-slide">
-      <img src="../images/hitsumabushi-hero.webp" alt="Omi Daikichi Beef Hitsumabushi">
+      <img src="../images/hitsumabushi-loin-hero.webp" alt="Omi Daikichi Beef Hitsumabushi">
     </div>
     <div class="hero-slide">
       <img src="../images/cow.webp" alt="Omi Daikichi Beef Cattle">
@@ -943,6 +944,7 @@
     </div>
 
     <!-- Top 3 Recommended Dishes -->
+    <div class="menu-content-bg">
     <h3 class="menu-sub-heading">Top 3 Recommended Dishes</h3>
     <div class="menu-recommended">
 
@@ -1001,6 +1003,7 @@
     <!-- Other Menu Button -->
     <div class="menu-bottom">
       <a href="#" class="btn-outline">Other Menu Items<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+    </div>
     </div>
 
   </section>
