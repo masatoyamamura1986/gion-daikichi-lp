@@ -264,7 +264,7 @@
 
     .menu-item-video {
       position: relative;
-      width: 200px;
+      width: 280px;
       aspect-ratio: 9 / 16;
       margin-top: 16px;
       border-radius: 8px;
@@ -483,6 +483,9 @@
     .menu-item img {
       flex: 1;
       min-width: 0;
+      object-fit: cover;
+      align-self: flex-start;
+      max-height: 400px;
     }
 
     .menu-item-info {
@@ -745,7 +748,7 @@
         flex-direction: column;
         gap: 30px;
         width: 100%;
-        padding: 0 20px;
+        padding: 20px;
       }
 
       .about-image {
@@ -809,7 +812,9 @@
       }
 
       .menu-item-video {
-        width: 160px;
+        width: 70%;
+        max-width: 300px;
+        margin: 16px auto 0;
       }
 
       .menu-collab {
