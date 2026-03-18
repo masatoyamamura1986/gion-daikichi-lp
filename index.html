@@ -262,6 +262,24 @@
       opacity: 0.6;
     }
 
+    .menu-item-video {
+      position: relative;
+      width: 200px;
+      aspect-ratio: 9 / 16;
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .menu-item-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* ===== HERO ===== */
     .hero {
       position: relative;
@@ -790,6 +808,10 @@
         font-size: 13px;
       }
 
+      .menu-item-video {
+        width: 160px;
+      }
+
       .menu-collab {
         gap: 50px;
         margin-bottom: 50px;
@@ -957,7 +979,9 @@
           <h4 class="menu-item-name">近江だいきち牛 ひつまぶし（ロース1.5倍）</h4>
           <p class="menu-item-price">¥5,455（税込）</p>
           <p class="menu-item-desc">だいきち近江牛を焼き上げた名物ひつまぶしで、ご飯の中に近江牛のコンビーフが入っています。3種の味と京出汁、またはピリ辛チゲで味の変化を楽しみながらお召し上がりください。</p>
-          <a href="https://www.instagram.com/reel/DRn6065jwec/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">動画<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <div class="menu-item-video">
+            <iframe src="https://www.youtube.com/embed/P0auTsckSBs" title="近江だいきち牛 ひつまぶし" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
@@ -968,18 +992,22 @@
           <h4 class="menu-item-name">近江だいきち牛 ステーキ重（ロース1.5倍）</h4>
           <p class="menu-item-price">¥5,318（税込）</p>
           <p class="menu-item-desc">近江の地で作られた天然醸造仕込みの濃口醤油を使用したオリジナル特製たれで焼き上げた贅沢な銘品です。ロースはとろけるような舌触りと独自のコクを味わって頂けます。赤身はお肉本来の食感と旨みを堪能して頂けます。</p>
-          <a href="https://www.instagram.com/reel/DRqlHRSj6wS/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">動画<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <div class="menu-item-video">
+            <iframe src="https://www.youtube.com/embed/8H91pXjzNBw" title="近江だいきち牛 ステーキ重" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
-      <!-- すき御膳 -->
+      <!-- すきやき御膳 -->
       <div class="menu-item">
-        <img src="images/suki-gozen.webp" alt="近江だいきち牛 すき御膳">
+        <img src="images/suki-gozen.webp" alt="近江だいきち牛 すきやき御膳">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">近江だいきち牛 すき御膳（ロース）</h4>
+          <h4 class="menu-item-name">近江だいきち牛 すきやき御膳（ロース）</h4>
           <p class="menu-item-price">¥4,091（税込）</p>
           <p class="menu-item-desc">自家製割下でお客様ご自身が炊き上げるすき焼きです。多彩な具材と自社牧場産だいきち近江牛をお楽しみください。</p>
-          <a href="https://www.instagram.com/reel/DR_h0R4D3rv/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">動画<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <div class="menu-item-video">
+            <iframe src="https://www.youtube.com/embed/m32Pma4qN6Y" title="近江だいきち牛 すきやき御膳" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
@@ -1021,7 +1049,7 @@
     <div class="store-info-layout">
       <div class="store-info-left">
         <!-- スライダー想定（静的に1枚目を表示） -->
-        <img src="images/interior-1f.webp" alt="祇園だいきち牧場 内観1F">
+        <img src="images/interior-2f-new.webp" alt="祇園だいきち牧場 内観2F">
       </div>
       <div class="store-info-detail">
         <div class="store-info-row">
@@ -1042,7 +1070,10 @@
         </div>
         <div class="store-info-row">
           <span class="store-info-label">お支払い</span>
-          <span class="store-info-value">※確認中</span>
+          <span class="store-info-value">
+            現金 / クレジットカード（VISA・Mastercard・JCB・American Express・Diners Club・Discover・UnionPay）/ 電子マネー（Apple Pay・iD・QUICPay+）/ 交通系IC（Kitaca・Suica・PASMO・TOICA・manaca・ICOCA・SUGOCA・nimoca・はやかけん）/ QR決済（Coin+・WeChat Pay・UnionPay QR・Alipay+）<br>
+            <small>※PiTaPaはご利用いただけません。一部ブランドは予告なく変更となる場合がございます。</small>
+          </span>
         </div>
         <div class="store-info-row">
           <span class="store-info-label">ご予約</span>

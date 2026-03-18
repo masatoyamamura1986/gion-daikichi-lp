@@ -262,6 +262,24 @@
       opacity: 0.6;
     }
 
+    .menu-item-video {
+      position: relative;
+      width: 200px;
+      aspect-ratio: 9 / 16;
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .menu-item-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* ===== HERO ===== */
     .hero {
       position: relative;
@@ -789,6 +807,10 @@
         font-size: 13px;
       }
 
+      .menu-item-video {
+        width: 160px;
+      }
+
       .menu-collab {
         gap: 50px;
         margin-bottom: 50px;
@@ -955,7 +977,9 @@
           <h4 class="menu-item-name">Omi Daikichi Beef Hitsumabushi &mdash; 1.5 Times Loin</h4>
           <p class="menu-item-price">&yen;5,455 (tax included)</p>
           <p class="menu-item-desc">Our signature hitsumabushi features grilled Daikichi Omi beef, with Omi beef corned beef tucked inside the rice. Enjoy it as the flavors change&mdash;three seasonings plus Kyoto dashi, or a spicy chige broth&mdash;served in stages.</p>
-          <a href="https://www.instagram.com/reel/DRn6065jwec/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">Movie<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <div class="menu-item-video">
+            <iframe src="https://www.youtube.com/embed/P0auTsckSBs" title="Omi Daikichi Beef Hitsumabushi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
@@ -966,7 +990,9 @@
           <h4 class="menu-item-name">Omi Daikichi Beef Steak Rice Bowl &mdash; 1.5 Times Loin</h4>
           <p class="menu-item-price">&yen;5,318 (tax included)</p>
           <p class="menu-item-desc">This luxurious signature dish is grilled with our original special sauce made with naturally brewed dark soy sauce crafted in Omi. The loin offers a melt-in-your-mouth texture and a distinctive richness, while the lean cut lets you savor the beef's natural bite and deep umami.</p>
-          <a href="https://www.instagram.com/reel/DRqlHRSj6wS/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">Movie<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <div class="menu-item-video">
+            <iframe src="https://www.youtube.com/embed/8H91pXjzNBw" title="Omi Daikichi Beef Steak Rice Bowl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
@@ -977,7 +1003,9 @@
           <h4 class="menu-item-name">Omi Daikichi Beef Sukiyaki Set &mdash; Loin</h4>
           <p class="menu-item-price">&yen;4,091 (tax included)</p>
           <p class="menu-item-desc">This is sukiyaki simmered at your table in our house-made warishita sauce. Enjoy a variety of ingredients together with Daikichi Omi beef from our own ranch.</p>
-          <a href="https://www.instagram.com/reel/DR_h0R4D3rv/?hl=ja" class="btn-outline-small" target="_blank" rel="noopener">Movie<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+          <div class="menu-item-video">
+            <iframe src="https://www.youtube.com/embed/m32Pma4qN6Y" title="Omi Daikichi Beef Sukiyaki Set" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
@@ -1018,7 +1046,7 @@
     </div>
     <div class="store-info-layout">
       <div class="store-info-left">
-        <img src="../images/interior-1f.webp" alt="Gion Daikichi Ranch Interior 1F">
+        <img src="../images/interior-2f-new.webp" alt="Gion Daikichi Ranch Interior 2F">
       </div>
       <div class="store-info-detail">
         <div class="store-info-row">
@@ -1039,7 +1067,10 @@
         </div>
         <div class="store-info-row">
           <span class="store-info-label">Payment</span>
-          <span class="store-info-value">TBD</span>
+          <span class="store-info-value">
+            Cash / Credit Cards (VISA, Mastercard, JCB, American Express, Diners Club, Discover, UnionPay) / E-Money (Apple Pay, iD, QUICPay+) / Transit IC (Kitaca, Suica, PASMO, TOICA, manaca, ICOCA, SUGOCA, nimoca, Hayakaken) / QR (Coin+, WeChat Pay, UnionPay QR, Alipay+)<br>
+            <small>*PiTaPa is not accepted. Some brands may change without notice.</small>
+          </span>
         </div>
         <div class="store-info-row">
           <span class="store-info-label">Reservations</span>
