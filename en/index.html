@@ -601,6 +601,44 @@
       margin-top: 30px;
     }
 
+    /* ===== INSTAGRAM ===== */
+    .instagram {
+      padding: 120px 0;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .instagram-grid a,
+    .instagram-grid .instagram-thumb {
+      display: block;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .instagram-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s;
+    }
+
+    .instagram-grid a:hover img {
+      opacity: 0.8;
+    }
+
+    .instagram-more {
+      text-align: center;
+      margin-top: 40px;
+    }
+
     /* ===== FOOTER ===== */
     .footer {
       background: #FFFFFF;
@@ -853,6 +891,15 @@
         font-size: 14px;
       }
 
+      /* INSTAGRAM */
+      .instagram {
+        padding: 60px 20px;
+      }
+
+      .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       /* FOOTER */
       .footer {
         padding: 40px 20px 30px;
@@ -1089,6 +1136,33 @@
   </section>
 
 </div>
+
+<!-- INSTAGRAM -->
+<section class="instagram" id="instagram">
+  <div class="section-heading">
+    <h2>Instagram</h2>
+  </div>
+  <div class="instagram-grid">
+    <a href="https://www.instagram.com/p/DRn6065jwec/?hl=ja" target="_blank" rel="noopener">
+      <img src="../images/instagram-1.jpg" alt="Instagram Post 1" loading="lazy" decoding="async">
+    </a>
+    <a href="https://www.instagram.com/p/DRqlHRSj6wS/?hl=ja" target="_blank" rel="noopener">
+      <img src="../images/instagram-2.jpg" alt="Instagram Post 2" loading="lazy" decoding="async">
+    </a>
+    <a href="https://www.instagram.com/p/DR_h0R4D3rv/?hl=ja" target="_blank" rel="noopener">
+      <img src="../images/instagram-3.jpg" alt="Instagram Post 3" loading="lazy" decoding="async">
+    </a>
+    <a href="https://www.instagram.com/p/DSR7jTij61s/?hl=ja" target="_blank" rel="noopener">
+      <img src="../images/instagram-4.jpg" alt="Instagram Post 4" loading="lazy" decoding="async">
+    </a>
+    <span class="instagram-thumb">
+      <img src="../images/instagram-5.jpg" alt="Instagram Post 5" loading="lazy" decoding="async">
+    </span>
+    <span class="instagram-thumb">
+      <img src="../images/instagram-6.jpg" alt="Instagram Post 6" loading="lazy" decoding="async">
+    </span>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
