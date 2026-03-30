@@ -438,7 +438,9 @@
 
     .about-buttons {
       display: flex;
-      gap: 24px;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
 
     /* ===== MENU ===== */
@@ -559,10 +561,53 @@
       min-width: 0;
     }
 
-    .store-info-left img {
+    .interior-slider {
+      position: relative;
       width: 100%;
       aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+
+    .interior-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .interior-slide.active {
+      opacity: 1;
+    }
+
+    .interior-slide img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+    }
+
+    .interior-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .interior-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .interior-dot.active {
+      background: #fff;
     }
 
     .store-info-detail {
@@ -1103,8 +1148,18 @@
     </div>
     <div class="store-info-layout">
       <div class="store-info-left">
-        <img src="../images/interior-2f-new.webp" alt="Gion Daikichi Ranch Interior 2F">
-        <img src="../images/interior-1f-new.webp" alt="Gion Daikichi Ranch Interior 1F" style="margin-top: 20px;">
+        <div class="interior-slider">
+          <div class="interior-slide active">
+            <img src="../images/interior-2f-new.webp" alt="Gion Daikichi Ranch Interior 2F">
+          </div>
+          <div class="interior-slide">
+            <img src="../images/interior-1f-new.webp" alt="Gion Daikichi Ranch Interior 1F">
+          </div>
+          <div class="interior-dots">
+            <span class="interior-dot active" data-index="0"></span>
+            <span class="interior-dot" data-index="1"></span>
+          </div>
+        </div>
       </div>
       <div class="store-info-detail">
         <div class="store-info-row">
@@ -1226,6 +1281,31 @@
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', closeNav);
   }
+})();
+
+// Interior Slider
+(function() {
+  var slides = document.querySelectorAll('.interior-slide');
+  var dots = document.querySelectorAll('.interior-dot');
+  var current = 0;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  setInterval(function() {
+    goTo((current + 1) % slides.length);
+  }, 4000);
+
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      goTo(Number(this.dataset.index));
+    });
+  });
 })();
 </script>
 
