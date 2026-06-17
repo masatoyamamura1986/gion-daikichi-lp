@@ -469,25 +469,55 @@
       margin-bottom: 50px;
     }
 
+    /* メニューイントロ */
+    .menu-intro {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .menu-intro-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      color: #585858;
+      margin-bottom: 16px;
+    }
+
+    .menu-intro-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      line-height: 2;
+      color: #585858;
+    }
+
     .menu-recommended {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      margin-bottom: 100px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px 40px;
+      margin-bottom: 80px;
     }
 
     .menu-item {
       display: flex;
-      gap: 80px;
+      flex-direction: column;
+      gap: 0;
       width: 100%;
     }
 
     .menu-item img {
-      flex: 1;
-      min-width: 0;
+      width: 100%;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
-      align-self: flex-start;
-      max-height: 400px;
+      margin-bottom: 20px;
+    }
+
+    .menu-item-number {
+      font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: #585858;
+      margin-bottom: 10px;
     }
 
     .menu-item-info {
@@ -499,21 +529,21 @@
 
     .menu-item-name {
       font-family: 'Noto Serif JP', serif;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 500;
       letter-spacing: 0.12em;
       line-height: 1.6;
       color: #585858;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .menu-item-price {
       font-family: 'Noto Serif JP', serif;
-      font-size: 18px;
+      font-size: 15px;
       letter-spacing: 0.08em;
       line-height: 2;
       color: #585858;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .menu-item-desc {
@@ -530,6 +560,23 @@
       flex-direction: column;
       gap: 60px;
       margin-bottom: 80px;
+    }
+
+    .menu-collab .menu-item {
+      flex-direction: row;
+      gap: 60px;
+    }
+
+    .menu-collab .menu-item img {
+      flex: 0 0 260px;
+      width: 260px;
+      aspect-ratio: auto;
+      max-height: 260px;
+      margin-bottom: 0;
+    }
+
+    .menu-collab .menu-item-info {
+      justify-content: center;
     }
 
     .menu-bottom {
@@ -563,14 +610,24 @@
 
     /* ひつまぶし 三膳の楽しみ方 */
     .hitsumabushi-steps {
-      padding: 80px 0 20px;
-      margin-bottom: 80px;
+      padding: 80px 0 60px;
+      margin-bottom: 0;
       border-top: 1px solid #E8E8E8;
+    }
+
+    .hitsumabushi-steps-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: #585858;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .hitsumabushi-steps-intro {
       font-family: 'Noto Serif JP', serif;
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: 0.1em;
       line-height: 2;
       color: #585858;
@@ -580,7 +637,8 @@
 
     .hitsumabushi-steps-grid {
       display: flex;
-      gap: 40px;
+      align-items: flex-start;
+      gap: 0;
     }
 
     .hitsumabushi-step {
@@ -595,6 +653,17 @@
       margin-bottom: 20px;
     }
 
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      padding-top: calc((100% / 3 * 0.75));
+      color: #585858;
+      font-size: 20px;
+      margin-top: 80px;
+      flex-shrink: 0;
+    }
+
     .step-label {
       font-family: 'Noto Serif JP', serif;
       font-size: 12px;
@@ -605,7 +674,7 @@
 
     .step-title {
       font-family: 'Noto Serif JP', serif;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 500;
       letter-spacing: 0.12em;
       line-height: 1.6;
@@ -621,6 +690,12 @@
       letter-spacing: 0.08em;
       line-height: 2;
       color: #585858;
+    }
+
+    .hitsumabushi-steps-bottom {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
     }
 
     /* ===== STORE INFO ===== */
@@ -991,13 +1066,33 @@
         margin-bottom: 50px;
       }
 
+      .menu-recommended {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .menu-collab .menu-item {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .menu-collab .menu-item img {
+        flex: none;
+        width: 100%;
+        max-height: none;
+        margin-bottom: 20px;
+      }
+
       .menu-item-bullets li {
         font-size: 13px;
       }
 
       .hitsumabushi-steps {
-        padding: 50px 0 10px;
-        margin-bottom: 50px;
+        padding: 50px 0 40px;
+      }
+
+      .hitsumabushi-steps-title {
+        font-size: 20px;
       }
 
       .hitsumabushi-steps-intro {
@@ -1008,6 +1103,10 @@
       .hitsumabushi-steps-grid {
         flex-direction: column;
         gap: 40px;
+      }
+
+      .step-arrow {
+        display: none;
       }
 
       .step-title {
@@ -1180,12 +1279,20 @@
     <!-- おすすめ料理 -->
     <div class="menu-content-bg">
     <h3 class="menu-sub-heading">おすすめ料理</h3>
+
+    <!-- 料理のこだわり -->
+    <div class="menu-intro">
+      <p class="menu-intro-label">料理のこだわり</p>
+      <p class="menu-intro-text">自社牧場で育てた近江牛だからこそ、他にはない旨みと上質な味の深み。<br>素材そのものの美味しさを丁寧に引き出す自慢の料理をご堪能ください。</p>
+    </div>
+
     <div class="menu-recommended">
 
-      <!-- ひつまぶし -->
+      <!-- 01 ひつまぶし -->
       <div class="menu-item">
         <img src="images/hitsumabushi-menu.webp" alt="名物！ 近江だいきち牛ひつまぶし">
         <div class="menu-item-info">
+          <p class="menu-item-number">01</p>
           <h4 class="menu-item-name">名物！ 近江だいきち牛ひつまぶし</h4>
           <p class="menu-item-price">¥5,455（税込）</p>
           <ul class="menu-item-bullets">
@@ -1196,10 +1303,11 @@
         </div>
       </div>
 
-      <!-- ステーキ重 -->
+      <!-- 02 ステーキ重 -->
       <div class="menu-item">
         <img src="images/steak-ju-menu.webp" alt="近江だいきち牛ステーキ重">
         <div class="menu-item-info">
+          <p class="menu-item-number">02</p>
           <h4 class="menu-item-name">近江だいきち牛ステーキ重</h4>
           <p class="menu-item-price">¥5,318（税込）</p>
           <ul class="menu-item-bullets">
@@ -1210,10 +1318,11 @@
         </div>
       </div>
 
-      <!-- すきやき御膳 -->
+      <!-- 03 すきやき御膳 -->
       <div class="menu-item">
         <img src="images/sukiyaki-gozen-menu.webp" alt="近江だいきち牛すきやき御膳">
         <div class="menu-item-info">
+          <p class="menu-item-number">03</p>
           <h4 class="menu-item-name">近江だいきち牛すきやき御膳</h4>
           <p class="menu-item-price">¥4,091（税込）</p>
           <ul class="menu-item-bullets">
@@ -1224,10 +1333,11 @@
         </div>
       </div>
 
-      <!-- 魯山人風すきしゃぶ -->
+      <!-- 04 魯山人風すきしゃぶ -->
       <div class="menu-item">
         <img src="images/rosanjin.webp" alt="近江だいきち牛 魯山人風すきしゃぶ">
         <div class="menu-item-info">
+          <p class="menu-item-number">04</p>
           <h4 class="menu-item-name">近江だいきち牛 魯山人風すきしゃぶ</h4>
           <ul class="menu-item-bullets">
             <li>近江牛の旨みを引き立てる、特別なすきしゃぶ</li>
@@ -1239,8 +1349,9 @@
 
     </div>
 
-    <!-- ③ ひつまぶし 三膳の楽しみ方 -->
+    <!-- ひつまぶし 三膳の楽しみ方 -->
     <div class="hitsumabushi-steps">
+      <h3 class="hitsumabushi-steps-title">名物ひつまぶしの楽しみ方</h3>
       <p class="hitsumabushi-steps-intro">一杯で三度の美味しさ、素材の旨みと、味の変化を心ゆくまでご堪能ください。</p>
       <div class="hitsumabushi-steps-grid">
         <div class="hitsumabushi-step">
@@ -1249,18 +1360,23 @@
           <p class="step-title">そのままで</p>
           <p class="step-desc">まずはそのままで。近江だいきち牛のしっとりとした食感と旨みをご堪能ください。</p>
         </div>
+        <div class="step-arrow">→</div>
         <div class="hitsumabushi-step">
           <img src="images/hitsumabushi-step2.webp" alt="二膳目 薬味を添えて">
           <p class="step-label">二膳目</p>
           <p class="step-title">薬味を添えて</p>
           <p class="step-desc">わさび・ねぎ・山椒などの薬味を添えて、香りや食感の変化をお楽しみください。</p>
         </div>
+        <div class="step-arrow">→</div>
         <div class="hitsumabushi-step">
           <img src="images/hitsumabushi-step3.webp" alt="三膳目 出しまたは、ピリ辛チゲで">
           <p class="step-label">三膳目</p>
           <p class="step-title">出しまたは、ピリ辛チゲで</p>
           <p class="step-desc">京出汁でさらりと、またはピリ辛チゲでコク深く。お好みの味わいで最後まで美味しくお召し上がりください。</p>
         </div>
+      </div>
+      <div class="hitsumabushi-steps-bottom">
+        <a href="https://storage.googleapis.com/studio-design-asset-files/projects/EXawe3QwOD/s-1x1_4c34a905-0c37-4c8c-a7ea-cedcb4610d50.pdf" class="btn-outline" target="_blank" rel="noopener">おすすめの料理をもっと見る<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
       </div>
     </div>
 
