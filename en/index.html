@@ -468,51 +468,92 @@
       margin-bottom: 50px;
     }
 
+    .menu-intro {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .menu-intro-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      color: #585858;
+      margin-bottom: 16px;
+    }
+
+    .menu-intro-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+    }
+
     .menu-recommended {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      margin-bottom: 100px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px 40px;
+      margin-bottom: 80px;
     }
 
     .menu-item {
       display: flex;
-      gap: 80px;
+      flex-direction: column;
+      gap: 0;
       width: 100%;
     }
 
     .menu-item img {
-      flex: 1;
-      min-width: 0;
+      width: 100%;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
-      align-self: flex-start;
-      max-height: 400px;
+      margin-bottom: 20px;
     }
 
     .menu-item-info {
       display: flex;
       flex-direction: column;
-      flex: 1;
-      min-width: 0;
+    }
+
+    .menu-item-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: #585858;
+      margin-bottom: 10px;
     }
 
     .menu-item-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 500;
       letter-spacing: 0.08em;
       line-height: 1.6;
       color: #585858;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .menu-item-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-size: 16px;
       letter-spacing: 0.08em;
       line-height: 2;
       color: #585858;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+    }
+
+    .menu-item-bullets {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      line-height: 2;
+      color: #585858;
+      padding-left: 1.2em;
+      margin: 0;
+    }
+
+    .menu-item-bullets li {
+      margin-bottom: 2px;
     }
 
     .menu-item-desc {
@@ -524,6 +565,93 @@
       margin-bottom: 20px;
     }
 
+    /* Hitsumabushi Steps */
+    .hitsumabushi-steps {
+      padding: 80px 0 60px;
+      border-top: 1px solid #E8E8E8;
+    }
+
+    .hitsumabushi-steps-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #585858;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .hitsumabushi-steps-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .hitsumabushi-steps-grid {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+
+    .hitsumabushi-step {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hitsumabushi-step img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      color: #585858;
+      font-size: 20px;
+      margin-top: 80px;
+      flex-shrink: 0;
+    }
+
+    .step-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: #585858;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: #585858;
+      border-bottom: 1px solid #E8E8E8;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      line-height: 2;
+      color: #585858;
+    }
+
+    .hitsumabushi-steps-bottom {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
     .menu-collab {
       display: flex;
       flex-direction: column;
@@ -531,9 +659,23 @@
       margin-bottom: 80px;
     }
 
+    .menu-collab .menu-item {
+      flex-direction: row;
+      gap: 60px;
+    }
+
+    .menu-collab .menu-item img {
+      flex: 0 0 260px;
+      width: 260px;
+      aspect-ratio: auto;
+      max-height: 260px;
+      margin-bottom: 0;
+    }
+
     .menu-bottom {
       display: flex;
       justify-content: center;
+      margin-top: 60px;
     }
 
     /* ===== STORE INFO ===== */
@@ -867,6 +1009,7 @@
       }
 
       .menu-recommended {
+        grid-template-columns: 1fr;
         gap: 50px;
         margin-bottom: 60px;
       }
@@ -877,26 +1020,41 @@
       }
 
       .menu-item img {
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 4 / 3;
         object-fit: cover;
       }
 
       .menu-item-name {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .menu-item-price {
-        font-size: 16px;
+        font-size: 15px;
       }
 
       .menu-item-desc {
         font-size: 13px;
       }
 
-      .menu-item-video {
-        width: 70%;
-        max-width: 300px;
-        margin: 16px auto 0;
+      .step-arrow {
+        display: none;
+      }
+
+      .hitsumabushi-steps-grid {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .menu-collab .menu-item {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .menu-collab .menu-item img {
+        width: 100%;
+        flex: none;
+        aspect-ratio: 4 / 3;
+        max-height: none;
       }
 
       .menu-collab {
@@ -1066,41 +1224,108 @@
       <h2>Menu</h2>
     </div>
 
-    <!-- Top 3 Recommended Dishes -->
+    <!-- Our Culinary Craft -->
     <div class="menu-content-bg">
-    <h3 class="menu-sub-heading">Top 3 Recommended Dishes</h3>
+    <h3 class="menu-sub-heading">Our Culinary Craft</h3>
+
+    <!-- Intro -->
+    <div class="menu-intro">
+      <p class="menu-intro-label">Our Culinary Craft</p>
+      <p class="menu-intro-text">Because we raise our own Omi beef, every dish carries a depth of flavor found nowhere else.<br>Savor our finest creations, prepared to draw out the pure, natural taste of each ingredient.</p>
+    </div>
+
     <div class="menu-recommended">
 
-      <!-- Hitsumabushi -->
+      <!-- 01 Hitsumabushi -->
       <div class="menu-item">
-        <img src="../images/hitsumabushi.webp" alt="Omi Daikichi Beef Hitsumabushi">
+        <img src="../images/hitsumabushi-menu.webp" alt="Signature Omi Daikichi Beef Hitsumabushi">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">Omi Daikichi Beef Hitsumabushi &mdash; 1.5 Times Loin</h4>
+          <p class="menu-item-number">01</p>
+          <h4 class="menu-item-name">Signature Omi Daikichi Beef Hitsumabushi</h4>
           <p class="menu-item-price">&yen;5,455 (tax included)</p>
-          <p class="menu-item-desc">Our signature hitsumabushi features grilled Daikichi Omi beef, with Omi beef corned beef tucked inside the rice. Enjoy it as the flavors change&mdash;three seasonings plus Kyoto dashi, or a spicy chige broth&mdash;served in stages.</p>
+          <ul class="menu-item-bullets">
+            <li>Our own ranch-raised Omi beef, served over steaming Omi rice</li>
+            <li>Topped with richly flavored 100% beef shank corned beef</li>
+            <li>A low melting point fat that lingers lightly on the palate</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Steak Bowl -->
+      <!-- 02 Steak Rice Bowl -->
       <div class="menu-item">
-        <img src="../images/steak-ju.webp" alt="Omi Daikichi Beef Steak Rice Bowl">
+        <img src="../images/steak-ju-menu.webp" alt="Omi Daikichi Beef Steak Rice Bowl">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">Omi Daikichi Beef Steak Rice Bowl &mdash; 1.5 Times Loin</h4>
+          <p class="menu-item-number">02</p>
+          <h4 class="menu-item-name">Omi Daikichi Beef Steak Rice Bowl</h4>
           <p class="menu-item-price">&yen;5,318 (tax included)</p>
-          <p class="menu-item-desc">This luxurious signature dish is grilled with our original special sauce made with naturally brewed dark soy sauce crafted in Omi. The loin offers a melt-in-your-mouth texture and a distinctive richness, while the lean cut lets you savor the beef's natural bite and deep umami.</p>
+          <ul class="menu-item-bullets">
+            <li>Grilled with naturally brewed dark soy sauce to draw out deep umami</li>
+            <li>Melt-in-your-mouth loin, or lean cuts with bold, satisfying bite</li>
+            <li>A luxurious bowl born from the cycle of Omi beef and Omi rice</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Sukiyaki Set -->
+      <!-- 03 Sukiyaki Set -->
       <div class="menu-item">
-        <img src="../images/suki-gozen.webp" alt="Omi Daikichi Beef Sukiyaki Set">
+        <img src="../images/sukiyaki-gozen-menu.webp" alt="Omi Daikichi Beef Sukiyaki Set">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">Omi Daikichi Beef Sukiyaki Set &mdash; Loin</h4>
+          <p class="menu-item-number">03</p>
+          <h4 class="menu-item-name">Omi Daikichi Beef Sukiyaki Set</h4>
           <p class="menu-item-price">&yen;4,091 (tax included)</p>
-          <p class="menu-item-desc">This is sukiyaki simmered at your table in our house-made warishita sauce. Enjoy a variety of ingredients together with Daikichi Omi beef from our own ranch.</p>
+          <ul class="menu-item-bullets">
+            <li>Our ranch-raised Omi beef, simmered tableside in house-made warishita</li>
+            <li>Wrapped in the silky richness of Ryu no Tamago egg</li>
+            <li>Paired with Shiga&#39;s iconic clove-shaped fu, Yawata konnyaku &amp; Kyoto vegetables</li>
+          </ul>
         </div>
       </div>
 
+      <!-- 04 Rosanjin-Style Sukishabu -->
+      <div class="menu-item">
+        <img src="../images/rosanjin.webp" alt="Omi Daikichi Beef Rosanjin-Style Sukishabu">
+        <div class="menu-item-info">
+          <p class="menu-item-number">04</p>
+          <h4 class="menu-item-name">Omi Daikichi Beef Rosanjin-Style Sukishabu</h4>
+          <ul class="menu-item-bullets">
+            <li>A special sukishabu that elevates the natural umami of Omi beef</li>
+            <li>A warishita with plum and sake, offering a gentle acidity and depth</li>
+            <li>Briefly swirled in the broth to savor the pure, elegant sweetness of the meat</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- How to Enjoy Hitsumabushi -->
+    <div class="hitsumabushi-steps">
+      <h3 class="hitsumabushi-steps-title">How to Enjoy Our Signature Hitsumabushi</h3>
+      <p class="hitsumabushi-steps-intro">One bowl, three ways to savor. Enjoy the shifting flavors and the pure essence of each ingredient to the very last bite.</p>
+      <div class="hitsumabushi-steps-grid">
+        <div class="hitsumabushi-step">
+          <img src="../images/hitsumabushi-step1.webp" alt="First Bowl — As It Is">
+          <p class="step-label">First Bowl</p>
+          <p class="step-title">As It Is</p>
+          <p class="step-desc">Begin by enjoying it plain. Savor the moist texture and rich umami of Omi Daikichi beef on its own.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="hitsumabushi-step">
+          <img src="../images/hitsumabushi-step2.webp" alt="Second Bowl — With Condiments">
+          <p class="step-label">Second Bowl</p>
+          <p class="step-title">With Condiments</p>
+          <p class="step-desc">Add wasabi, green onion, and sansho pepper to enjoy the shifting aromas and textures.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="hitsumabushi-step">
+          <img src="../images/hitsumabushi-step3.webp" alt="Third Bowl — With Dashi or Spicy Jjigae">
+          <p class="step-label">Third Bowl</p>
+          <p class="step-title">With Dashi or Spicy Jjigae</p>
+          <p class="step-desc">Pour Kyoto dashi for a light, refined finish&mdash;or spicy jjigae for a rich, bold depth. Enjoy your favorite way to the very last bite.</p>
+        </div>
+      </div>
+      <div class="hitsumabushi-steps-bottom">
+        <a href="https://storage.googleapis.com/studio-design-asset-files/projects/EXawe3QwOD/s-1x1_4c34a905-0c37-4c8c-a7ea-cedcb4610d50.pdf" class="btn-outline" target="_blank" rel="noopener">See More Recommended Dishes<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
+      </div>
     </div>
 
     <!-- Mimiko Collaboration Menu -->
@@ -1114,7 +1339,6 @@
           <h4 class="menu-item-name">Omi Daikichi Beef Sukiyaki Curry Udon</h4>
           <p class="menu-item-price">&yen;2,500 (tax included)</p>
           <p class="menu-item-desc">"Kyoto Curry Udon" is finished as a thick, glossy sauce by blending our umami dashi&mdash;crafted to bring out the richness of kombu kelp and bonito&mdash;with 11 carefully selected spices. Enjoy the sweet, rich taste of wagyu sukiyaki, made with loin from our own-ranch Omi Daikichi Beef seasoned in our house-made warishita, together with thick-cut fried tofu and Kujo green onions&mdash;bringing out the signature depth and texture of Gion Mimiko's original curry udon.</p>
-          <a href="https://mimikou.jp/kyoto-curry-udon-flavor/" class="btn-outline-small" target="_blank" rel="noopener">Gion Mimiko<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
         </div>
       </div>
 
@@ -1125,10 +1349,13 @@
           <h4 class="menu-item-name">Omi Daikichi Beef Tendon Curry Udon</h4>
           <p class="menu-item-price">&yen;1,500 (tax included)</p>
           <p class="menu-item-desc">This Kyoto-style curry udon features a rich, savory broth made from kombu kelp and bonito, blended with 11 carefully selected spices and finished with a thick, silky texture. Made with tender, slow-cooked tendon from Omi Daikichi Beef, a premium Japanese wagyu from our own farm, and topped with thick-cut fried tofu and Kujo green onions, this original curry udon from Gion Mimiko offers deep flavor and satisfying texture.</p>
-          <a href="https://mimikou.jp/kyoto-curry-udon-flavor/" class="btn-outline-small" target="_blank" rel="noopener">Gion Mimiko<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
         </div>
       </div>
 
+    </div>
+
+    <div class="menu-bottom">
+      <a href="../menu-en.pdf" class="btn-outline" target="_blank" rel="noopener">See Full Menu<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
     </div>
 
     </div>
