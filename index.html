@@ -535,6 +535,92 @@
     .menu-bottom {
       display: flex;
       justify-content: center;
+      margin-top: 60px;
+    }
+
+    .menu-item-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .menu-item-bullets li {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
+      padding-left: 1.2em;
+      position: relative;
+    }
+
+    .menu-item-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #585858;
+    }
+
+    /* ひつまぶし 三膳の楽しみ方 */
+    .hitsumabushi-steps {
+      padding: 80px 0 20px;
+      margin-bottom: 80px;
+      border-top: 1px solid #E8E8E8;
+    }
+
+    .hitsumabushi-steps-intro {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      line-height: 2;
+      color: #585858;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .hitsumabushi-steps-grid {
+      display: flex;
+      gap: 40px;
+    }
+
+    .hitsumabushi-step {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hitsumabushi-step img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .step-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: #585858;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      color: #585858;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #E8E8E8;
+      padding-bottom: 12px;
+    }
+
+    .step-desc {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: #585858;
     }
 
     /* ===== STORE INFO ===== */
@@ -905,6 +991,29 @@
         margin-bottom: 50px;
       }
 
+      .menu-item-bullets li {
+        font-size: 13px;
+      }
+
+      .hitsumabushi-steps {
+        padding: 50px 0 10px;
+        margin-bottom: 50px;
+      }
+
+      .hitsumabushi-steps-intro {
+        font-size: 13px;
+        margin-bottom: 30px;
+      }
+
+      .hitsumabushi-steps-grid {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .step-title {
+        font-size: 16px;
+      }
+
       /* STORE INFO */
       .store-info {
         padding: 60px 0;
@@ -1051,7 +1160,7 @@
         <div class="section-heading">
           <h2>祇園だいきち牧場について</h2>
         </div>
-        <p class="about-text">祇園だいきち牧場は、里山の自社牧場で育てたA5ランク近江牛を楽しめるお店です。創業1896年から4代続く大吉商店の「近江だいきち牛」を使い、名物ひつまぶしやステーキ重、すき焼き重・すき焼き御膳などのオリジナルメニューをご用意。夜は近江牛の魅力をコース仕立てでお楽しみいただけます。さらに、創業1969年「京のカレーうどん 味味香」とコラボした、限定オリジナル3種の近江牛カレーうどんもご用意しています。</p>
+        <p class="about-text">自社牧場で育てた近江牛だからこそ、他にはない旨みと上質な味の深み。素材そのものの美味しさを丁寧に引き出す自慢の料理をご堪能ください。</p>
         <div class="about-buttons">
           <a href="http://1129.co.jp/company/" class="btn-outline" target="_blank" rel="noopener">大吉商店株式会社について<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
           <a href="https://daikichibeef.jp/farm" class="btn-outline" target="_blank" rel="noopener">近江だいきち牛について<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
@@ -1070,39 +1179,89 @@
 
     <!-- おすすめ料理 -->
     <div class="menu-content-bg">
-    <h3 class="menu-sub-heading">おすすめ料理3選</h3>
+    <h3 class="menu-sub-heading">おすすめ料理</h3>
     <div class="menu-recommended">
 
       <!-- ひつまぶし -->
       <div class="menu-item">
-        <img src="images/hitsumabushi.webp" alt="近江だいきち牛 ひつまぶし">
+        <img src="images/hitsumabushi-menu.webp" alt="名物！ 近江だいきち牛ひつまぶし">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">近江だいきち牛 ひつまぶし（ロース1.5倍）</h4>
+          <h4 class="menu-item-name">名物！ 近江だいきち牛ひつまぶし</h4>
           <p class="menu-item-price">¥5,455（税込）</p>
-          <p class="menu-item-desc">だいきち近江牛を焼き上げた名物ひつまぶしで、ご飯の中に近江牛のコンビーフが入っています。3種の味と京出汁、またはピリ辛チゲで味の変化を楽しみながらお召し上がりください。</p>
+          <ul class="menu-item-bullets">
+            <li>自社牧場で育てた近江牛を、熱々の近江米と一緒に</li>
+            <li>しっとり旨み深い牛スネ100％コンビーフ入り</li>
+            <li>低い融点が生む、軽やかな脂の口溶け</li>
+          </ul>
         </div>
       </div>
 
       <!-- ステーキ重 -->
       <div class="menu-item">
-        <img src="images/steak-ju.webp" alt="近江だいきち牛 ステーキ重">
+        <img src="images/steak-ju-menu.webp" alt="近江だいきち牛ステーキ重">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">近江だいきち牛 ステーキ重（ロース1.5倍）</h4>
+          <h4 class="menu-item-name">近江だいきち牛ステーキ重</h4>
           <p class="menu-item-price">¥5,318（税込）</p>
-          <p class="menu-item-desc">近江の地で作られた天然醸造仕込みの濃口醤油を使用したオリジナル特製たれで焼き上げた贅沢な銘品です。ロースはとろけるような舌触りと独自のコクを味わって頂けます。赤身はお肉本来の食感と旨みを堪能して頂けます。</p>
+          <ul class="menu-item-bullets">
+            <li>伝統製法の天然醸造醤油で、旨みを引き出す</li>
+            <li>口溶けの良いロースや、赤身本来の旨みを味わう</li>
+            <li>近江牛と近江米、だいきちの循環が生む贅沢重</li>
+          </ul>
         </div>
       </div>
 
       <!-- すきやき御膳 -->
       <div class="menu-item">
-        <img src="images/suki-gozen.webp" alt="近江だいきち牛 すきやき御膳">
+        <img src="images/sukiyaki-gozen-menu.webp" alt="近江だいきち牛すきやき御膳">
         <div class="menu-item-info">
-          <h4 class="menu-item-name">近江だいきち牛 すきやき御膳（ロース）</h4>
+          <h4 class="menu-item-name">近江だいきち牛すきやき御膳</h4>
           <p class="menu-item-price">¥4,091（税込）</p>
-          <p class="menu-item-desc">自家製割下でお客様ご自身が炊き上げるすき焼きです。多彩な具材と自社牧場産だいきち近江牛をお楽しみください。</p>
+          <ul class="menu-item-bullets">
+            <li>自社牧場の近江牛を、自家製割下の小鍋で味わう</li>
+            <li>龍の卵で、近江牛の甘みをまろやかに包み込む</li>
+            <li>滋賀名物の丁字麩・八幡こんにゃく、京野菜を合わせて</li>
+          </ul>
         </div>
       </div>
 
+      <!-- 魯山人風すきしゃぶ -->
+      <div class="menu-item">
+        <img src="images/rosanjin.webp" alt="近江だいきち牛 魯山人風すきしゃぶ">
+        <div class="menu-item-info">
+          <h4 class="menu-item-name">近江だいきち牛 魯山人風すきしゃぶ</h4>
+          <ul class="menu-item-bullets">
+            <li>近江牛の旨みを引き立てる、特別なすきしゃぶ</li>
+            <li>梅と日本酒を合わせた、酸味とコクのある割り下</li>
+            <li>さっとくぐらせて、肉本来の甘みを上品に味わう</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ③ ひつまぶし 三膳の楽しみ方 -->
+    <div class="hitsumabushi-steps">
+      <p class="hitsumabushi-steps-intro">一杯で三度の美味しさ、素材の旨みと、味の変化を心ゆくまでご堪能ください。</p>
+      <div class="hitsumabushi-steps-grid">
+        <div class="hitsumabushi-step">
+          <img src="images/hitsumabushi-step1.webp" alt="一膳目 そのままで">
+          <p class="step-label">一膳目</p>
+          <p class="step-title">そのままで</p>
+          <p class="step-desc">まずはそのままで。近江だいきち牛のしっとりとした食感と旨みをご堪能ください。</p>
+        </div>
+        <div class="hitsumabushi-step">
+          <img src="images/hitsumabushi-step2.webp" alt="二膳目 薬味を添えて">
+          <p class="step-label">二膳目</p>
+          <p class="step-title">薬味を添えて</p>
+          <p class="step-desc">わさび・ねぎ・山椒などの薬味を添えて、香りや食感の変化をお楽しみください。</p>
+        </div>
+        <div class="hitsumabushi-step">
+          <img src="images/hitsumabushi-step3.webp" alt="三膳目 出しまたは、ピリ辛チゲで">
+          <p class="step-label">三膳目</p>
+          <p class="step-title">出しまたは、ピリ辛チゲで</p>
+          <p class="step-desc">京出汁でさらりと、またはピリ辛チゲでコク深く。お好みの味わいで最後まで美味しくお召し上がりください。</p>
+        </div>
+      </div>
     </div>
 
     <!-- 味味香コラボメニュー -->
@@ -1116,7 +1275,6 @@
           <h4 class="menu-item-name">近江だいきち牛すきやきカレーうどん</h4>
           <p class="menu-item-price">¥2,500（税込）</p>
           <p class="menu-item-desc">昆布と鰹の旨味を引き出した「旨みだし」に厳選された11種類のスパイスを加え、あんかけに仕上げたのが「京のカレーうどん」です。自社牧場産の"近江だいきち牛"のロース肉を自家製割下で味付けした、「和牛すき焼き」の甘くて濃厚な食感と、厚切りのあげと九条ねぎで、祇園味味香オリジナルカレーうどんの旨味と食感をご賞味ください。</p>
-          <a href="https://mimikou.jp/" class="btn-outline-small" target="_blank" rel="noopener">祇園味味香<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
         </div>
       </div>
 
@@ -1127,10 +1285,14 @@
           <h4 class="menu-item-name">近江だいきち牛すじカレーうどん</h4>
           <p class="menu-item-price">¥1,500（税込）</p>
           <p class="menu-item-desc">昆布と鰹の旨味を引き出した「旨みだし」に厳選された11種類のスパイスを加え、あんかけに仕上げたのが「京のカレーうどん」です。自社牧場の"近江だいきち牛"のすじ肉をトロトロに仕上げ、厚切りのあげと九条ねぎで、祇園みみこうオリジナルカレーうどんの旨味と食感をご賞味ください。</p>
-          <a href="https://mimikou.jp/" class="btn-outline-small" target="_blank" rel="noopener">祇園味味香<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
         </div>
       </div>
 
+    </div>
+
+    <!-- ④ メニュー一覧 -->
+    <div class="menu-bottom">
+      <a href="https://storage.googleapis.com/studio-design-asset-files/projects/EXawe3QwOD/s-1x1_4c34a905-0c37-4c8c-a7ea-cedcb4610d50.pdf" class="btn-outline" target="_blank" rel="noopener">メニュー一覧はこちら<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#585858" stroke-width="1"/></svg></a>
     </div>
 
     </div>
