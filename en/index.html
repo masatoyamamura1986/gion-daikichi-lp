@@ -473,14 +473,6 @@
       margin-bottom: 60px;
     }
 
-    .menu-intro-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      letter-spacing: 0.25em;
-      color: #585858;
-      margin-bottom: 16px;
-    }
-
     .menu-intro-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 16px;
@@ -592,21 +584,15 @@
     }
 
     .hitsumabushi-steps-grid {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
     }
 
-    .hitsumabushi-step {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .hitsumabushi-step img {
+    .step-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      margin-bottom: 20px;
+      display: block;
     }
 
     .step-arrow {
@@ -615,9 +601,14 @@
       padding: 0 16px;
       color: #585858;
       font-size: 20px;
-      margin-top: 80px;
-      flex-shrink: 0;
+      align-self: center;
     }
+
+    .step-text {
+      padding-top: 20px;
+    }
+
+    .step-spacer {}
 
     .step-label {
       font-family: 'Cormorant Garamond', serif;
@@ -1036,14 +1027,21 @@
         font-size: 13px;
       }
 
-      .step-arrow {
-        display: none;
+      .hitsumabushi-steps-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
       }
 
-      .hitsumabushi-steps-grid {
-        flex-direction: column;
-        gap: 40px;
-      }
+      .step-img:nth-child(1) { order: 1; }
+      .step-text:nth-child(6) { order: 2; margin-top: 16px; margin-bottom: 30px; }
+      .step-img:nth-child(3) { order: 3; }
+      .step-text:nth-child(8) { order: 4; margin-top: 16px; margin-bottom: 30px; }
+      .step-img:nth-child(5) { order: 5; }
+      .step-text:nth-child(10) { order: 6; margin-top: 16px; }
+
+      .step-arrow { display: none; }
+      .step-spacer { display: none; }
 
       .menu-collab .menu-item {
         flex-direction: column;
@@ -1230,7 +1228,6 @@
 
     <!-- Intro -->
     <div class="menu-intro">
-      <p class="menu-intro-label">Our Culinary Craft</p>
       <p class="menu-intro-text">Because we raise our own Omi beef, every dish carries a depth of flavor found nowhere else.<br>Savor our finest creations, prepared to draw out the pure, natural taste of each ingredient.</p>
     </div>
 
@@ -1302,22 +1299,24 @@
       <h3 class="hitsumabushi-steps-title">How to Enjoy Our Signature Hitsumabushi</h3>
       <p class="hitsumabushi-steps-intro">One bowl, three ways to savor. Enjoy the shifting flavors and the pure essence of each ingredient to the very last bite.</p>
       <div class="hitsumabushi-steps-grid">
-        <div class="hitsumabushi-step">
-          <img src="../images/hitsumabushi-step1.webp" alt="First Bowl — As It Is">
+        <img class="step-img" src="../images/hitsumabushi-step1.webp" alt="First Bowl — As It Is">
+        <div class="step-arrow">→</div>
+        <img class="step-img" src="../images/hitsumabushi-step2.webp" alt="Second Bowl — With Condiments">
+        <div class="step-arrow">→</div>
+        <img class="step-img" src="../images/hitsumabushi-step3.webp" alt="Third Bowl — With Dashi or Spicy Jjigae">
+        <div class="step-text">
           <p class="step-label">First Bowl</p>
           <p class="step-title">As It Is</p>
           <p class="step-desc">Begin by enjoying it plain. Savor the moist texture and rich umami of Omi Daikichi beef on its own.</p>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="hitsumabushi-step">
-          <img src="../images/hitsumabushi-step2.webp" alt="Second Bowl — With Condiments">
+        <div class="step-spacer"></div>
+        <div class="step-text">
           <p class="step-label">Second Bowl</p>
           <p class="step-title">With Condiments</p>
           <p class="step-desc">Add wasabi, green onion, and sansho pepper to enjoy the shifting aromas and textures.</p>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="hitsumabushi-step">
-          <img src="../images/hitsumabushi-step3.webp" alt="Third Bowl — With Dashi or Spicy Jjigae">
+        <div class="step-spacer"></div>
+        <div class="step-text">
           <p class="step-label">Third Bowl</p>
           <p class="step-title">With Dashi or Spicy Jjigae</p>
           <p class="step-desc">Pour Kyoto dashi for a light, refined finish&mdash;or spicy jjigae for a rich, bold depth. Enjoy your favorite way to the very last bite.</p>

@@ -475,14 +475,6 @@
       margin-bottom: 60px;
     }
 
-    .menu-intro-label {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      color: #585858;
-      margin-bottom: 16px;
-    }
-
     .menu-intro-text {
       font-family: 'Noto Serif JP', serif;
       font-size: 15px;
@@ -636,33 +628,31 @@
     }
 
     .hitsumabushi-steps-grid {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
     }
 
-    .hitsumabushi-step {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .hitsumabushi-step img {
+    .step-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      margin-bottom: 20px;
+      display: block;
     }
 
     .step-arrow {
       display: flex;
       align-items: center;
       padding: 0 16px;
-      padding-top: calc((100% / 3 * 0.75));
       color: #585858;
       font-size: 20px;
-      margin-top: 80px;
-      flex-shrink: 0;
+      align-self: center;
     }
+
+    .step-text {
+      padding-top: 20px;
+    }
+
+    .step-spacer {}
 
     .step-label {
       font-family: 'Noto Serif JP', serif;
@@ -1101,13 +1091,20 @@
       }
 
       .hitsumabushi-steps-grid {
+        display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 0;
       }
 
-      .step-arrow {
-        display: none;
-      }
+      .step-img:nth-child(1) { order: 1; }
+      .step-text:nth-child(6) { order: 2; margin-top: 16px; margin-bottom: 30px; }
+      .step-img:nth-child(3) { order: 3; }
+      .step-text:nth-child(8) { order: 4; margin-top: 16px; margin-bottom: 30px; }
+      .step-img:nth-child(5) { order: 5; }
+      .step-text:nth-child(10) { order: 6; margin-top: 16px; }
+
+      .step-arrow { display: none; }
+      .step-spacer { display: none; }
 
       .step-title {
         font-size: 16px;
@@ -1282,7 +1279,6 @@
 
     <!-- 料理のこだわり -->
     <div class="menu-intro">
-      <p class="menu-intro-label">料理のこだわり</p>
       <p class="menu-intro-text">自社牧場で育てた近江牛だからこそ、他にはない旨みと上質な味の深み。<br>素材そのものの美味しさを丁寧に引き出す自慢の料理をご堪能ください。</p>
     </div>
 
@@ -1354,22 +1350,24 @@
       <h3 class="hitsumabushi-steps-title">名物ひつまぶしの楽しみ方</h3>
       <p class="hitsumabushi-steps-intro">一杯で三度の美味しさ、素材の旨みと、味の変化を心ゆくまでご堪能ください。</p>
       <div class="hitsumabushi-steps-grid">
-        <div class="hitsumabushi-step">
-          <img src="images/hitsumabushi-step1.webp" alt="一膳目 そのままで">
+        <img class="step-img" src="images/hitsumabushi-step1.webp" alt="一膳目 そのままで">
+        <div class="step-arrow">→</div>
+        <img class="step-img" src="images/hitsumabushi-step2.webp" alt="二膳目 薬味を添えて">
+        <div class="step-arrow">→</div>
+        <img class="step-img" src="images/hitsumabushi-step3.webp" alt="三膳目 出汁または、ピリ辛チゲで">
+        <div class="step-text">
           <p class="step-label">一膳目</p>
           <p class="step-title">そのままで</p>
           <p class="step-desc">まずはそのままで。近江だいきち牛のしっとりとした食感と旨みをご堪能ください。</p>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="hitsumabushi-step">
-          <img src="images/hitsumabushi-step2.webp" alt="二膳目 薬味を添えて">
+        <div class="step-spacer"></div>
+        <div class="step-text">
           <p class="step-label">二膳目</p>
           <p class="step-title">薬味を添えて</p>
           <p class="step-desc">わさび・ねぎ・山椒などの薬味を添えて、香りや食感の変化をお楽しみください。</p>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="hitsumabushi-step">
-          <img src="images/hitsumabushi-step3.webp" alt="三膳目 出汁または、ピリ辛チゲで">
+        <div class="step-spacer"></div>
+        <div class="step-text">
           <p class="step-label">三膳目</p>
           <p class="step-title">出汁または、ピリ辛チゲで</p>
           <p class="step-desc">京出汁でさらりと、またはピリ辛チゲでコク深く。お好みの味わいで最後まで美味しくお召し上がりください。</p>
